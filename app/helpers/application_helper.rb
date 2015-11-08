@@ -3,6 +3,10 @@ module ApplicationHelper
     t key, scope: [:views, :navigation, :requests]
   end
 
+  def text_with_line_breaks(text)
+    text.gsub("\n", '<br/>').html_safe
+  end
+
   def subnav_link_to(active, link_target, link_text = '')
     content_tag(:li, class: active ? 'active' : '') do
       link_to link_target do

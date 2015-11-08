@@ -3,9 +3,9 @@
   <%= t_navigation :home %>
 <% end %>
 <%= navbar_menu params[:controller] == 'requests', t_navigation(:requests) do %>
-  <%= subnav_link_to false, root_path, t_navigation(:all_requests) %>
-  <%= subnav_link_to false, root_path, t_navigation(:new_request) %>
-  <%= subnav_link_to false, root_path, t_navigation(:my_requests) %>
+  <%= subnav_link_to false, requests_path, t_navigation(:all_requests) %>
+  <%= subnav_link_to false, new_request_path, t_navigation(:new_request) %>
+  <%= subnav_link_to false, my_requests_path, t_navigation(:my_requests) %>
 <% end %>
 <% if user_signed_in? %>
   <li><%= link_to 'Edit account', edit_user_registration_path %></li>

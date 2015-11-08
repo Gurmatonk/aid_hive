@@ -28,13 +28,14 @@ Rails.application.configure do
   config.assets.debug = true
 
   config.action_mailer.smtp_settings = {
-    address: "smtp.gmail.com",
-    port: 587,
-    domain: Rails.application.secrets.domain_name,
+    address: "peschla.net",
+    port: 25,
+    domain: Rails.application.secrets.email_domain_name,
     authentication: "plain",
     enable_starttls_auto: true,
     user_name: Rails.application.secrets.email_provider_username,
-    password: Rails.application.secrets.email_provider_password
+    password: Rails.application.secrets.email_provider_password,
+    openssl_verify_mode: Rails.application.secrets.email_provider_verification_mode
   }
   # ActionMailer Config
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }

@@ -1,0 +1,2 @@
+class Offer < Entry
+end

@@ -1,7 +1,13 @@
 <% content_for :title do %>About<% end %>
-<h3>About the Website</h3>
-<p>
-This web application was created with
-<%= link_to('Rails Composer', 'http://railsapps.github.io/rails-composer/') %>
-from the <%= link_to('RailsApps project', 'http://railsapps.github.io/') %>.
-</p>
+
+<% content_for :header do %>
+  <h3>About Aid Hive</h3>
+<% end %>
+
+<% content_for :content do %>
+  This site is inspired by the great work of the Refugee Welcome voluntary groups that started to bundle refugee relief in a non-bureaucratic way. Many people want to help but no one knows how, what, where, when.
+  So activits with contacts to refugees or accommodations started collecting requests and spread them via Facebook. This is a great success, many requests are answered in no time.<br>
+  Aid Hive is meant to be a place where these requests can be collected (and offers be placed, so helpers can get back to that).<br><br>
+
+  That's all for the beginning. For the future I hope this project evolves to more and more improve non-bureaucratic refugee relief - based on the ideas and needs of its users.
+<% end %>

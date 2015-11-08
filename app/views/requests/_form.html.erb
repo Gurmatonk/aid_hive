@@ -1,0 +1,13 @@
+<%= bootstrap_form_for @request, layout: :horizontal, label_col: 'col-md-2', control_col: 'col-md-10' do |f| %>
+  <%= f.hidden_field :user_id %>
+  <%= f.text_field :title %>
+  <%= f.text_area :description, rows: 5 %>
+  <%= f.text_field :street_name %>
+  <%= f.text_field :street_number %>
+  <%= f.text_field :postal_code %>
+  <%= f.text_field :city %>
+  <%= f.form_group do %>
+    <%= f.submit class: 'btn btn-primary' %>
+  <% end %>
+<% end %>
+

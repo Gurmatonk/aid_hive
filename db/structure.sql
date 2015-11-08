@@ -57,7 +57,8 @@ CREATE TABLE entries (
     latitude double precision,
     longitude double precision,
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    updated_at timestamp without time zone NOT NULL,
+    user_id integer
 );
 
 
@@ -264,6 +265,13 @@ CREATE INDEX index_entries_on_title ON entries USING btree (title);
 
 
 --
+-- Name: index_entries_on_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_entries_on_user_id ON entries USING btree (user_id);
+
+
+--
 -- Name: index_users_on_email; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -348,6 +356,14 @@ CREATE INDEX users_to_tsvector_idx4 ON users USING gin (to_tsvector('english'::r
 
 
 --
+-- Name: fk_rails_99dc12d4fd; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY entries
+    ADD CONSTRAINT fk_rails_99dc12d4fd FOREIGN KEY (user_id) REFERENCES users(id);
+
+
+--
 -- PostgreSQL database dump complete
 --
 
@@ -368,4 +384,6 @@ INSERT INTO schema_migrations (version) VALUES ('20151107213903');
 INSERT INTO schema_migrations (version) VALUES ('20151107214137');
 
 INSERT INTO schema_migrations (version) VALUES ('20151107214905');
+
+INSERT INTO schema_migrations (version) VALUES ('20151107234038');
 

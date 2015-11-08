@@ -1,4 +1,24 @@
 en:
+  activerecord:
+    models:
+      request: Request
+    attributes:
+      request:
+        city: City
+        description: Description
+        postal_code: Postal code
+        street_name: Street number
+        street_number: Street name
+        title: Title
+    errors:
+    values:
+      request:
+  attributes:
+    location: Location
+  controllers:
+    requests:
+      create:
+        success: You created a new request.
   views:
     navigation:
       home: Home
