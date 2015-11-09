@@ -7,7 +7,7 @@ class OfferPolicy
   end
 
   def create?
-    true
+    @current_user.present?
   end
 
   def destroy?
@@ -23,7 +23,7 @@ class OfferPolicy
   end
 
   def new?
-    true
+    create?
   end
 
   def show?
@@ -32,5 +32,9 @@ class OfferPolicy
 
   def update?
     false
+  end
+
+  def permitted_attributes
+    [:city, :description, :postal_code, :street_name, :street_number, :title, :user_id]
   end
 end

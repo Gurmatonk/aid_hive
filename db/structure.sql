@@ -56,6 +56,7 @@ CREATE TABLE entries (
     city character varying NOT NULL,
     latitude double precision,
     longitude double precision,
+    type character varying NOT NULL,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
     user_id integer
@@ -262,6 +263,13 @@ CREATE INDEX index_entries_on_street_number ON entries USING btree (street_numbe
 --
 
 CREATE INDEX index_entries_on_title ON entries USING btree (title);
+
+
+--
+-- Name: index_entries_on_type; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_entries_on_type ON entries USING btree (type);
 
 
 --

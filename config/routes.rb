@@ -9,4 +9,10 @@ Rails.application.routes.draw do
       get :my
     end
   end
+
+  resources :offers do
+    collection do
+      get :my
+    end
+  end
 end

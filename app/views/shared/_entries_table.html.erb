@@ -1,0 +1,20 @@
+<%= render layout: 'shared/paginated', locals: {collection: entries} do %>
+  <table class="table">
+    <thead>
+      <th><%= Entry.human_attribute_name :created_at %></th>
+      <th><%= Entry.human_attribute_name :title %></th>
+      <th><%= Entry.human_attribute_name :description %></th>
+      <th><%= Entry.human_attribute_name :location %></th>
+    </thead>
+    <tbody>
+      <% entries.each do |entry| %>
+        <tr>
+          <td><%= l entry.created_at, format: :date %></td>
+          <td><%= link_to entry.title, entry %></td>
+          <td><%= entry.description %></td>
+          <td><%= entry.full_street_address %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>

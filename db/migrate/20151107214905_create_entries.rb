@@ -9,6 +9,7 @@ class CreateEntries < ActiveRecord::Migration
       t.string :city, index: true, null: false
       t.float :latitude
       t.float :longitude
+      t.string :type, index: true, null: false
 
       t.timestamps null: false
     end

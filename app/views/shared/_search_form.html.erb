@@ -1,0 +1,18 @@
+<% query_var_name = 'query' unless defined?(query_var_name) && query_var_name.present? %>
+<%= form_tag(local_assigns.fetch(:url_for_options, ''), method: :get, class: 'search-form', role: 'form') do %>
+  <div class="form-group">
+    <div class="input-group">
+      <%= text_field_tag query_var_name.to_sym, instance_variable_get("@#{query_var_name}") || params[query_var_name].to_s, class: 'form-control', placeholder: local_assigns.fetch(:placeholder, '') %>
+      <% unless params[query_var_name].blank? %>
+        <span class="input-group-addon"><%= icon_link 'remove', params.merge({query_var_name.to_sym => nil}), 'Suche zurücksetzen' %></span>
+      <% end %>
+      <div class="input-group-btn">
+        <%= button_tag type: 'submit', :class => 'btn btn-default' do %>
+          <%= icon_image 'search' %>
+          Suchen
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <%= yield if block_given? %>
+<% end %>

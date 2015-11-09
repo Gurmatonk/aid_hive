@@ -1,0 +1,12 @@
+<% content_for :header do %>
+  <h1><%= Offer.model_name.human %>: <%= @offer.title %></h1>
+<% end %>
+
+<% content_for :content do %>
+  <dl class="dl-horizontal">
+    <dt><%= Offer.human_attribute_name :description %></dt>
+    <dd><%= text_with_line_breaks @offer.description %></dd>
+    <dt><%= Offer.human_attribute_name :location %></dt>
+    <dd><%= @offer.full_street_address %></dd>
+  </dl>
+<% end %>

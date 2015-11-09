@@ -1,0 +1,18 @@
+<% kaminari_params = {window: 2, param_name: local_assigns.fetch(:param_name, nil), params: local_assigns.fetch(:params, nil)} %>
+
+<%= yield unless collection.empty? %>
+
+<div class="pagination-block">
+  <div class="row">
+    <div class="col-md-5">
+      <div class="pagination-info">
+        <%= page_entries_info collection, entry_name: local_assigns.fetch(:entry_name, nil) %>
+      </div>
+    </div>
+    <div class="col-md-7">
+      <div class="pull-right">
+        <%= paginate collection, kaminari_params %>
+      </div>
+    </div>
+  </div>
+</div>
