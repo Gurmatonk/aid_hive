@@ -85,3 +85,6 @@ pickle-email-*.html
 
 config/database.yml
 config/secrets.yml
+
+# ignore precompiled assets for local test of demo and production mode
+public/assets/

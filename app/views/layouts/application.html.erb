@@ -22,6 +22,11 @@
           </div>
           <%= yield :header %>
         </div>
+        <% if Rails.env.demo? %>
+          <div class="row">
+            <div class="col-md-12 alert alert-danger text-center">Testsystem - Keine echten Angebote/Anfragen - No real offers/requests</div>
+          </div>
+        <% end %>
         <div class="row">
           <div class="col-md-<%= content_for?(:sidebar) ? local_assigns.fetch(:content_width, 9) : 12 %>">
             <%= render 'layouts/messages' %>
