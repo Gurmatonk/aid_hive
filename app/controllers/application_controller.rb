@@ -7,10 +7,6 @@ class ApplicationController < ActionController::Base
 
   protected
 
-  def set_query
-    @query = params[:query].try(:downcase) || ''
-  end
-
   def success_message(options = {})
     translate_message(:success, options)
   end

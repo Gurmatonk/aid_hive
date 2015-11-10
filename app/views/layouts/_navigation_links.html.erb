@@ -1,16 +1,17 @@
 <%# add navigation links to this file %>
 <%= subnav_link_to params[:controller] == 'visitors', root_path do %>
-  <%= t_navigation :home %>
+  <%= t_view :home %>
 <% end %>
-<%= navbar_menu params[:controller] == 'requests', t_navigation(:requests) do %>
-  <%= subnav_link_to false, requests_path, t_navigation(:all_requests) %>
-  <%= subnav_link_to false, new_request_path, t_navigation(:new_request) if policy(Request).create? %>
-  <%= subnav_link_to false, my_requests_path, t_navigation(:my_requests) if current_user.present? %>
+<% scope = :navigation %>
+<%= navbar_menu params[:controller] == 'requests', t_view(:requests, scope) do %>
+  <%= subnav_link_to false, requests_path, t_view(:all_requests, scope) %>
+  <%= subnav_link_to false, new_request_path, t_view(:new_request, scope) if policy(Request).create? %>
+  <%= subnav_link_to false, my_requests_path, t_view(:my_requests, scope) if current_user.present? %>
 <% end %>
-<%= navbar_menu params[:controller] == 'offers', t_navigation(:offers) do %>
-  <%= subnav_link_to false, offers_path, t_navigation(:all_offers) %>
-  <%= subnav_link_to false, new_offer_path, t_navigation(:new_offer) if policy(Offer).create? %>
-  <%= subnav_link_to false, my_offers_path, t_navigation(:my_offers) if current_user.present? %>
+<%= navbar_menu params[:controller] == 'offers', t_view(:offers) do %>
+  <%= subnav_link_to false, offers_path, t_view(:all_offers, scope) %>
+  <%= subnav_link_to false, new_offer_path, t_view(:new_offer, scope) if policy(Offer).create? %>
+  <%= subnav_link_to false, my_offers_path, t_view(:my_offers, scope) if current_user.present? %>
 <% end %>
 <% if user_signed_in? %>
   <li><%= link_to 'Edit account', edit_user_registration_path %></li>

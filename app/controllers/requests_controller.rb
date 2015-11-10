@@ -1,5 +1,5 @@
 class RequestsController < ApplicationController
-  before_action :set_query, only: [:index]
+  include EntrySearchable
   after_action :verify_authorized, :except => [:index, :show]
 
   def create
@@ -20,8 +20,6 @@ class RequestsController < ApplicationController
   end
 
   def index
-    @requests = Request.all.page(params[:page])
-    @requests = @requests.fuzzy_search({title: @query, description: @query}, false) if @query.present?
   end
 
   def new

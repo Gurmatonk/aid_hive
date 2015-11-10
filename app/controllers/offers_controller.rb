@@ -1,4 +1,6 @@
 class OffersController < ApplicationController
+  include EntrySearchable
+
   def create
     @offer = Offer.new
     @offer.assign_attributes permitted_attributes(@offer)
@@ -17,7 +19,6 @@ class OffersController < ApplicationController
   end
 
   def index
-    @offers = Offer.all.page(params[:page])
   end
 
   def new

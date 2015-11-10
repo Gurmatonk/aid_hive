@@ -1,6 +1,12 @@
 module ApplicationHelper
-  def t_navigation(key)
-    t key, scope: [:views, :navigation, :requests]
+  def within_options(selected = params[:query_within])
+    options = [[t_view(:query_within_any), 47058]] +  [5, 10, 20, 25, 30, 50, 75, 100].map { |value| ["#{value} km", value] }
+    options_for_select(options, selected)
+  end
+
+  def t_view(key, scope = [controller.controller_name])
+    scope = [scope] unless scope.is_a?(Array)
+    t key, scope: ([:views] + scope), default: t(key, scope: [:views, :common])
   end
 
   def text_with_line_breaks(text)
@@ -41,5 +47,4 @@ module ApplicationHelper
   def icon_image(icon, tooltip = '', extra_css_class = '', html_options = {})
     content_tag :span, '', html_options.merge(class: "glyphicon glyphicon-#{icon} #{extra_css_class}", title: tooltip, rel: 'tooltip')
   end
-
 end

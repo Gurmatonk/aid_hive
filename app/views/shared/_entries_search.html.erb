@@ -1,0 +1,28 @@
+<% query_var_name = 'query_keywords' unless defined?(query_var_name) && query_var_name.present? %>
+<%= form_tag(local_assigns.fetch(:url_for_options, ''), method: :get, class: 'form-horizontal search-form', role: 'form') do %>
+  <div class="form-group">
+    <div class="col-md-4">
+      <%= label_tag :query_keywords, t_view(:query_keywords) %>
+      <div class="input-group">
+        <%= text_field_tag :query_keywords, params[:query_keywords], class: 'form-control', placeholder: t_view(:query_keywords_placeholder) %>
+        <% unless params[query_var_name].blank? %>
+          <span class="input-group-addon"><%= icon_link 'remove', params.merge({query_var_name.to_sym => nil}), 'Suche zurücksetzen' %></span>
+        <% end %>
+        <div class="input-group-btn">
+          <%= button_tag type: 'submit', :class => 'btn btn-default' do %>
+            <%= icon_image 'search' %>
+            Suchen
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <%= label_tag :query_location, t_view(:query_location) %>
+      <%= text_field_tag :query_location, params[:query_location], class: 'form-control', placeholder: t_view(:query_location_placeholder) %>
+    </div>
+    <div class="col-md-2">
+      <%= label_tag :query_within, t_view(:query_within) %>
+      <%= select_tag(:query_within, within_options, class: 'form-control') %>
+    </div>
+  </div>
+<% end %>

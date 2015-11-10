@@ -8,8 +8,8 @@ en:
         city: City
         description: Description
         postal_code: Postal code
-        street_name: Street number
-        street_number: Street name
+        street_name: Street name
+        street_number: Street number
         title: Title
     errors:
     values:
@@ -228,6 +228,13 @@ en:
       short: "%d %b %I:%M %p"
     pm: pm
   views:
+    common:
+      query_keywords: Keywords
+      query_keywords_placeholder: sleeping bag
+      query_location: Location
+      query_location_placeholder: Pangaea
+      query_within: Within
+      query_within_any: Unlimited
     navigation:
       home: Home
       requests: Requests
