@@ -28,7 +28,7 @@ Rails.application.configure do
   config.assets.debug = true
 
   config.action_mailer.smtp_settings = {
-    address: "peschla.net",
+    address: Rails.application.secrets.email_smtp_server,
     port: 25,
     domain: Rails.application.secrets.email_domain_name,
     authentication: "plain",
