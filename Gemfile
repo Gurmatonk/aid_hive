@@ -50,6 +50,7 @@ end
 
 group :production do
   gem 'puma'
+  gem 'therubyracer'
 end
 
 group :test do
