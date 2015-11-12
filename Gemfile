@@ -48,7 +48,7 @@ group :development, :test do
   gem 'byebug'
 end
 
-group :production do
+group :production, :demo do
   gem 'puma'
   gem 'therubyracer'
 end
