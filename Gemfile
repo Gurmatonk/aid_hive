@@ -32,6 +32,12 @@ group :development do
   gem 'spring-commands-rspec'
   gem 'web-console', '~> 2.0'
   gem 'spring'
+
+  gem 'capistrano',         require: false
+  gem 'capistrano-rvm',     require: false
+  gem 'capistrano-rails',   require: false
+  gem 'capistrano-bundler', require: false
+  gem 'capistrano3-puma',   require: false
 end
 
 group :development, :test do
@@ -43,7 +49,7 @@ group :development, :test do
 end
 
 group :production do
-  gem 'unicorn'
+  gem 'puma'
 end
 
 group :test do
