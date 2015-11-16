@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   root to: 'visitors#index'
 
+  mount Commontator::Engine => '/commontator'
+
   devise_for :users
   resources :users
 

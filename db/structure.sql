@@ -43,6 +43,113 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
+-- Name: commontator_comments; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE commontator_comments (
+    id integer NOT NULL,
+    creator_type character varying,
+    creator_id integer,
+    editor_type character varying,
+    editor_id integer,
+    thread_id integer NOT NULL,
+    body text NOT NULL,
+    deleted_at timestamp without time zone,
+    cached_votes_up integer DEFAULT 0,
+    cached_votes_down integer DEFAULT 0,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+--
+-- Name: commontator_comments_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE commontator_comments_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: commontator_comments_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE commontator_comments_id_seq OWNED BY commontator_comments.id;
+
+
+--
+-- Name: commontator_subscriptions; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE commontator_subscriptions (
+    id integer NOT NULL,
+    subscriber_type character varying NOT NULL,
+    subscriber_id integer NOT NULL,
+    thread_id integer NOT NULL,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+--
+-- Name: commontator_subscriptions_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE commontator_subscriptions_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: commontator_subscriptions_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE commontator_subscriptions_id_seq OWNED BY commontator_subscriptions.id;
+
+
+--
+-- Name: commontator_threads; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE commontator_threads (
+    id integer NOT NULL,
+    commontable_type character varying,
+    commontable_id integer,
+    closed_at timestamp without time zone,
+    closer_type character varying,
+    closer_id integer,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+--
+-- Name: commontator_threads_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE commontator_threads_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: commontator_threads_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE commontator_threads_id_seq OWNED BY commontator_threads.id;
+
+
+--
 -- Name: entries; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -155,6 +262,27 @@ ALTER SEQUENCE users_id_seq OWNED BY users.id;
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY commontator_comments ALTER COLUMN id SET DEFAULT nextval('commontator_comments_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY commontator_subscriptions ALTER COLUMN id SET DEFAULT nextval('commontator_subscriptions_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY commontator_threads ALTER COLUMN id SET DEFAULT nextval('commontator_threads_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY entries ALTER COLUMN id SET DEFAULT nextval('entries_id_seq'::regclass);
 
 
@@ -163,6 +291,30 @@ ALTER TABLE ONLY entries ALTER COLUMN id SET DEFAULT nextval('entries_id_seq'::r
 --
 
 ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regclass);
+
+
+--
+-- Name: commontator_comments_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY commontator_comments
+    ADD CONSTRAINT commontator_comments_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: commontator_subscriptions_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY commontator_subscriptions
+    ADD CONSTRAINT commontator_subscriptions_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: commontator_threads_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY commontator_threads
+    ADD CONSTRAINT commontator_threads_pkey PRIMARY KEY (id);
 
 
 --
@@ -221,6 +373,55 @@ CREATE INDEX entries_to_tsvector_idx4 ON entries USING gin (to_tsvector('english
 --
 
 CREATE INDEX entries_to_tsvector_idx5 ON entries USING gin (to_tsvector('english'::regconfig, (city)::text));
+
+
+--
+-- Name: index_commontator_comments_on_c_id_and_c_type_and_t_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_commontator_comments_on_c_id_and_c_type_and_t_id ON commontator_comments USING btree (creator_id, creator_type, thread_id);
+
+
+--
+-- Name: index_commontator_comments_on_cached_votes_down; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_commontator_comments_on_cached_votes_down ON commontator_comments USING btree (cached_votes_down);
+
+
+--
+-- Name: index_commontator_comments_on_cached_votes_up; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_commontator_comments_on_cached_votes_up ON commontator_comments USING btree (cached_votes_up);
+
+
+--
+-- Name: index_commontator_comments_on_thread_id_and_created_at; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_commontator_comments_on_thread_id_and_created_at ON commontator_comments USING btree (thread_id, created_at);
+
+
+--
+-- Name: index_commontator_subscriptions_on_s_id_and_s_type_and_t_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE UNIQUE INDEX index_commontator_subscriptions_on_s_id_and_s_type_and_t_id ON commontator_subscriptions USING btree (subscriber_id, subscriber_type, thread_id);
+
+
+--
+-- Name: index_commontator_subscriptions_on_thread_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_commontator_subscriptions_on_thread_id ON commontator_subscriptions USING btree (thread_id);
+
+
+--
+-- Name: index_commontator_threads_on_c_id_and_c_type; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE UNIQUE INDEX index_commontator_threads_on_c_id_and_c_type ON commontator_threads USING btree (commontable_id, commontable_type);
 
 
 --
@@ -394,4 +595,6 @@ INSERT INTO schema_migrations (version) VALUES ('20151107214137');
 INSERT INTO schema_migrations (version) VALUES ('20151107214905');
 
 INSERT INTO schema_migrations (version) VALUES ('20151107234038');
+
+INSERT INTO schema_migrations (version) VALUES ('20151114163318');
 

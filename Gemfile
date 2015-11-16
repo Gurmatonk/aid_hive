@@ -18,6 +18,7 @@ gem 'human_attribute_values'
 gem 'geocoder'
 gem 'kaminari'
 gem 'textacular'
+gem 'commontator', '~> 4.10.0'
 
 group :development do
   gem 'better_errors'

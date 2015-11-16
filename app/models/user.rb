@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :invitable, :database_authenticatable, :registerable, :confirmable, :recoverable, :rememberable, :trackable, :validatable
   geocoded_by :full_street_address
+  acts_as_commontator
 
   enum role: [:user, :vip, :admin]
 

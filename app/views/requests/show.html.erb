@@ -9,4 +9,5 @@
     <dt><%= Request.human_attribute_name :location %></dt>
     <dd><%= @request.full_street_address %></dd>
   </dl>
+  <%= commontator_thread(@request) %>
 <% end %>

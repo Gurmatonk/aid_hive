@@ -1,6 +1,8 @@
 class AidHiveDeviseMailer < Devise::Mailer
   helper MailerHelper
 
+  default from: 'no-reply@aid-hive.org'
+
   SUBJECT_PREFIX = Rails.env.production? ? '[aid hive] ' : "[aid hive - #{Rails.env} system]"
 
   def confirmation_instructions(resource, token, opts = {})
