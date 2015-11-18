@@ -6,7 +6,12 @@ module ApplicationHelper
 
   def t_view(key, scope = [controller.controller_name])
     scope = [scope] unless scope.is_a?(Array)
-    t key, scope: ([:views] + scope), default: t(key, scope: [:views, :common])
+    scope = [:views] + scope
+    if I18n.exists?(scope + [key])
+      t key, scope: (scope)
+    else
+      t key, scope: [:views, :common]
+    end
   end
 
   def text_with_line_breaks(text)

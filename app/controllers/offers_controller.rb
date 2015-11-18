@@ -1,5 +1,7 @@
 class OffersController < ApplicationController
   include EntrySearchable
+  before_action :authenticate_user!, except: [:index, :show]
+  after_action :verify_authorized, except: [:index, :show]
 
   def create
     @offer = Offer.new

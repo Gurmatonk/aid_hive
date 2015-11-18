@@ -13,12 +13,13 @@ gem 'high_voltage'
 gem 'pg'
 gem 'pundit'
 gem 'leaflet-rails'
-gem 'bootstrap_form'
+gem 'bootstrap_form', path: '../rails-bootstrap-forms'
 gem 'human_attribute_values'
 gem 'geocoder'
 gem 'kaminari'
 gem 'textacular'
 gem 'commontator', '~> 4.10.0'
+gem 'mailboxer'
 
 group :development do
   gem 'better_errors'
@@ -33,6 +34,7 @@ group :development do
   gem 'spring-commands-rspec'
   gem 'web-console', '~> 2.0'
   gem 'spring'
+  gem 'bullet'
 
   gem 'capistrano',         require: false
   gem 'capistrano-rvm',     require: false

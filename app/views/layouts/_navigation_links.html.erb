@@ -1,17 +1,20 @@
 <%# add navigation links to this file %>
-<%= subnav_link_to params[:controller] == 'visitors', root_path do %>
-  <%= t_view :home %>
-<% end %>
 <% scope = :navigation %>
+<%= subnav_link_to params[:controller] == 'visitors', root_path do %>
+  <%= t_view(:home, scope) %>
+<% end %>
 <%= navbar_menu params[:controller] == 'requests', t_view(:requests, scope) do %>
   <%= subnav_link_to false, requests_path, t_view(:all_requests, scope) %>
   <%= subnav_link_to false, new_request_path, t_view(:new_request, scope) if policy(Request).create? %>
   <%= subnav_link_to false, my_requests_path, t_view(:my_requests, scope) if current_user.present? %>
 <% end %>
-<%= navbar_menu params[:controller] == 'offers', t_view(:offers) do %>
+<%= navbar_menu params[:controller] == 'offers', t_view(:offers, scope) do %>
   <%= subnav_link_to false, offers_path, t_view(:all_offers, scope) %>
   <%= subnav_link_to false, new_offer_path, t_view(:new_offer, scope) if policy(Offer).create? %>
   <%= subnav_link_to false, my_offers_path, t_view(:my_offers, scope) if current_user.present? %>
+<% end %>
+<%= navbar_menu params[:controller] == 'conversations', t_view(:conversations, scope) do %>
+  <%= subnav_link_to false, conversations_path, t_view(:my_conversations, scope) %>
 <% end %>
 <% if user_signed_in? %>
   <li><%= link_to 'Edit account', edit_user_registration_path %></li>

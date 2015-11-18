@@ -1,4 +1,6 @@
 en:
+  help:
+    street_name: Optional, recommneded for associations, discouraged with full personal name
   activerecord:
     attributes:
       commontator/comment:
@@ -11,6 +13,14 @@ en:
         thread: Discussion
       commontator/thread:
         commontable: Commontable
+    help:
+      user:
+        email: Your email won't be displayed to other users
+        name: Either your name or a nickname
+        street_name: Optional, recommneded for associations, discouraged with full personal name
+        street_number: Optional, recommneded for associations, discouraged with full personal name
+        postal_code: Required, used to approximate your location
+        city: Required, used to approximate your location
     models:
       commontator/comment:
         one: comment
@@ -21,7 +31,15 @@ en:
       commontator/thread:
         one: thread
         other: threads
-      request: Request
+      mailboxer/conversation:
+        one: Conversation
+        other: Conversations
+      offer:
+        one: Offer
+        other: Offers
+      request:
+        one: Request
+        other: Requests
     attributes:
       entry:
         created_at: Publicated
@@ -31,6 +49,10 @@ en:
         street_name: Street name
         street_number: Street number
         title: Title
+      offer:
+        user: Offerer
+      request:
+        user: Requester
     errors:
     values:
       request:
@@ -307,8 +329,14 @@ en:
       query_within: Within
       query_within_any: Unlimited
     navigation:
-      home: Home
-      requests: Requests
+      all_offers: All offers
       all_requests: All requests
-      new_request: New request
+      conversations: Conversations
+      home: Home
+      my_conversations: My conversations
+      my_offers: My offers
       my_requests: My requests
+      new_offer: New offer
+      new_request: New request
+      offers: Offers
+      requests: Requests

@@ -3,11 +3,5 @@
 <% end %>
 
 <% content_for :content do %>
-  <dl class="dl-horizontal">
-    <dt><%= Request.human_attribute_name :description %></dt>
-    <dd><%= text_with_line_breaks @request.description %></dd>
-    <dt><%= Request.human_attribute_name :location %></dt>
-    <dd><%= @request.full_street_address %></dd>
-  </dl>
-  <%= commontator_thread(@request) %>
+  <%= render partial: 'shared/entry_details', locals: {entry: @request} %>
 <% end %>

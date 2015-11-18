@@ -5,6 +5,8 @@ Rails.application.routes.draw do
 
   devise_for :users
   resources :users
+  resources :messages
+  resources :conversations
 
   resources :requests do
     collection do

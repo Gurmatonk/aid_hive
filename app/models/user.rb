@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   devise :invitable, :database_authenticatable, :registerable, :confirmable, :recoverable, :rememberable, :trackable, :validatable
   geocoded_by :full_street_address
   acts_as_commontator
+  acts_as_messageable
 
   enum role: [:user, :vip, :admin]
 

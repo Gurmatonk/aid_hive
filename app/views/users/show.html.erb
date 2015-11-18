@@ -1,2 +1,14 @@
-<h3>User</h3>
-<p>Email: <%= @user.email if @user.email %></p>
+<% content_for :header do %>
+  <h1>Profile of <%= @user.name %></h1>
+<% end %>
+
+<% content_for :content do %>
+  <dl class="dl-horizontal">
+    <dt><%= User.human_attribute_name :name %></dt>
+    <dd><%= @user.name %></dd>
+    <dt><%= User.human_attribute_name :email %></dt>
+    <dd><%= @user.email %></dd>
+    <dt><%= User.human_attribute_name :location %></dt>
+    <dd><%= @user.full_street_address %></dd>
+  </dl>
+<% end %>

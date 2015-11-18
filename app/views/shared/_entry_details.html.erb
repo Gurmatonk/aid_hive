@@ -1,0 +1,10 @@
+<dl class="dl-horizontal">
+  <dt><%= entry.class.human_attribute_name :user %></dt>
+  <dd><%= link_to entry.user.name, entry.user %></dd>
+  <dt><%= entry.class.human_attribute_name :description %></dt>
+  <dd><%= text_with_line_breaks entry.description %></dd>
+  <dt><%= entry.class.human_attribute_name :location %></dt>
+  <dd><%= entry.full_street_address %></dd>
+
+  <%= commontator_thread(entry) %>
+</dl>
