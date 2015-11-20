@@ -1,6 +1,5 @@
+---
 en:
-  help:
-    street_name: Optional, recommneded for associations, discouraged with full personal name
   activerecord:
     attributes:
       commontator/comment:
@@ -13,14 +12,28 @@ en:
         thread: Discussion
       commontator/thread:
         commontable: Commontable
+      entry:
+        city: City
+        created_at: Publicated
+        description: Description
+        postal_code: "Postal code"
+        street_name: "Street name"
+        street_number: "Street number"
+        title: Title
+      offer:
+        user: Offerer
+      request:
+        user: Requester
+    errors: ~
     help:
       user:
-        email: Your email won't be displayed to other users
-        name: Either your name or a nickname
-        street_name: Optional, recommneded for associations, discouraged with full personal name
-        street_number: Optional, recommneded for associations, discouraged with full personal name
-        postal_code: Required, used to approximate your location
-        city: Required, used to approximate your location
+        city: "Required, used to approximate your location"
+        email: "Your email won't be displayed to other users"
+        name: "Either your name or a nickname"
+        password: "Your password must have at least 8 characters"
+        postal_code: "Required, used to approximate your location"
+        street_name: "Optional, recommneded for associations, discouraged with full personal name"
+        street_number: "Optional, recommneded for associations, discouraged with full personal name"
     models:
       commontator/comment:
         one: comment
@@ -40,22 +53,8 @@ en:
       request:
         one: Request
         other: Requests
-    attributes:
-      entry:
-        created_at: Publicated
-        city: City
-        description: Description
-        postal_code: Postal code
-        street_name: Street name
-        street_number: Street number
-        title: Title
-      offer:
-        user: Offerer
-      request:
-        user: Requester
-    errors:
     values:
-      request:
+      request: ~
   attributes:
     location: Location
   commontator:
@@ -85,7 +84,7 @@ en:
         body: "%{creator_name} commented on %{commontable_name}:"
         subject: "%{creator_name} posted a comment on %{commontable_name}"
       thread_link_html: "<a href=\"%{commontable_url}\">Click here</a> to view all comments on %{commontable_name}."
-      undisclosed_recipients: "undisclosed-recipients"
+      undisclosed_recipients: undisclosed-recipients
     require_login: "You must login before you can post a comment."
     subscription:
       actions:
@@ -97,12 +96,12 @@ en:
         not_subscribed: "You are not subscribed to this discussion."
     thread:
       actions:
-        show_all: "Show All Comments"
-        filter: "Filter Comments"
         close: "Close Discussion"
         confirm_close: "Are you sure you want to close this discussion?"
+        filter: "Filter Comments"
         reopen: "Reopen Discussion"
         show: "Show Comments"
+        show_all: "Show All Comments"
       errors:
         already_closed: "This discussion has already been closed."
         not_closed: "This discussion is not closed."
@@ -113,96 +112,96 @@ en:
   controllers:
     offers:
       create:
-        success: You created a new offer.
+        success: "You created a new offer."
     requests:
       create:
-        success: You created a new request.
+        success: "You created a new request."
   date:
     abbr_day_names:
-    - Sun
-    - Mon
-    - Tue
-    - Wed
-    - Thu
-    - Fri
-    - Sat
+      - Sun
+      - Mon
+      - Tue
+      - Wed
+      - Thu
+      - Fri
+      - Sat
     abbr_month_names:
-    - Jan
-    - Feb
-    - Mar
-    - Apr
-    - May
-    - Jun
-    - Jul
-    - Aug
-    - Sep
-    - Oct
-    - Nov
-    - Dec
+      - Jan
+      - Feb
+      - Mar
+      - Apr
+      - May
+      - Jun
+      - Jul
+      - Aug
+      - Sep
+      - Oct
+      - Nov
+      - Dec
     day_names:
-    - Sunday
-    - Monday
-    - Tuesday
-    - Wednesday
-    - Thursday
-    - Friday
-    - Saturday
+      - Sunday
+      - Monday
+      - Tuesday
+      - Wednesday
+      - Thursday
+      - Friday
+      - Saturday
     formats:
       default: "%m-%d-%Y"
       long: "%B %d, %Y"
       short: "%b %d"
     month_names:
-    - January
-    - February
-    - March
-    - April
-    - May
-    - June
-    - July
-    - August
-    - September
-    - October
-    - November
-    - December
+      - January
+      - February
+      - March
+      - April
+      - May
+      - June
+      - July
+      - August
+      - September
+      - October
+      - November
+      - December
     order:
-    - :month
-    - :day
-    - :year
+      - !ruby/symbol month
+      - !ruby/symbol day
+      - !ruby/symbol year
   datetime:
     distance_in_words:
       about_x_hours:
-        one: about 1 hour
-        other: about %{count} hours
+        one: "about 1 hour"
+        other: "about %{count} hours"
       about_x_months:
-        one: about 1 month
-        other: about %{count} months
+        one: "about 1 month"
+        other: "about %{count} months"
       about_x_years:
-        one: about 1 year
-        other: about %{count} years
+        one: "about 1 year"
+        other: "about %{count} years"
       almost_x_years:
-        one: almost 1 year
-        other: almost %{count} years
-      half_a_minute: half a minute
+        one: "almost 1 year"
+        other: "almost %{count} years"
+      half_a_minute: "half a minute"
       less_than_x_minutes:
-        one: less than a minute
-        other: less than %{count} minutes
+        one: "less than a minute"
+        other: "less than %{count} minutes"
       less_than_x_seconds:
-        one: less than 1 second
-        other: less than %{count} seconds
+        one: "less than 1 second"
+        other: "less than %{count} seconds"
       over_x_years:
-        one: over 1 year
-        other: over %{count} years
+        one: "over 1 year"
+        other: "over %{count} years"
       x_days:
-        one: 1 day
+        one: "1 day"
         other: "%{count} days"
       x_minutes:
-        one: 1 minute
+        one: "1 minute"
         other: "%{count} minutes"
       x_months:
-        one: 1 month
+        one: "1 month"
         other: "%{count} months"
       x_seconds:
-        one: 1 second
+        one: "1 second"
         other: "%{count} seconds"
     prompts:
       day: Day
@@ -214,51 +213,53 @@ en:
   errors:
     format: "%{attribute} %{message}"
     messages:
-      accepted: must be accepted
-      blank: can't be blank
-      present: must be blank
-      confirmation: doesn't match %{attribute}
-      empty: can't be empty
-      equal_to: must be equal to %{count}
-      even: must be even
-      exclusion: is reserved
-      greater_than: must be greater than %{count}
-      greater_than_or_equal_to: must be greater than or equal to %{count}
-      inclusion: is not included in the list
-      invalid: is invalid
-      less_than: must be less than %{count}
-      less_than_or_equal_to: must be less than or equal to %{count}
-      not_a_number: is not a number
-      not_an_integer: must be an integer
-      odd: must be odd
-      record_invalid: 'Validation failed: %{errors}'
+      accepted: "must be accepted"
+      blank: "can't be blank"
+      confirmation: "doesn't match %{attribute}"
+      empty: "can't be empty"
+      equal_to: "must be equal to %{count}"
+      even: "must be even"
+      exclusion: "is reserved"
+      greater_than: "must be greater than %{count}"
+      greater_than_or_equal_to: "must be greater than or equal to %{count}"
+      inclusion: "is not included in the list"
+      invalid: "is invalid"
+      less_than: "must be less than %{count}"
+      less_than_or_equal_to: "must be less than or equal to %{count}"
+      not_a_number: "is not a number"
+      not_an_integer: "must be an integer"
+      odd: "must be odd"
+      other_than: "must be other than %{count}"
+      present: "must be blank"
+      record_invalid: "Validation failed: %{errors}"
       restrict_dependent_destroy:
-        one: Cannot delete record because a dependent %{record} exists
-        many: Cannot delete record because dependent %{record} exist
-      taken: has already been taken
+        many: "Cannot delete record because dependent %{record} exist"
+        one: "Cannot delete record because a dependent %{record} exists"
+      taken: "has already been taken"
       too_long:
-        one: is too long (maximum is 1 character)
-        other: is too long (maximum is %{count} characters)
+        one: "is too long (maximum is 1 character)"
+        other: "is too long (maximum is %{count} characters)"
       too_short:
-        one: is too short (minimum is 1 character)
-        other: is too short (minimum is %{count} characters)
+        one: "is too short (minimum is 1 character)"
+        other: "is too short (minimum is %{count} characters)"
+      weak_password: "not strong enough. Consider adding a number, symbols or more letters to make it stronger."
       wrong_length:
-        one: is the wrong length (should be 1 character)
-        other: is the wrong length (should be %{count} characters)
-      other_than: must be other than %{count}
-      weak_password: not strong enough. Consider adding a number, symbols or more letters to make it stronger.
+        one: "is the wrong length (should be 1 character)"
+        other: "is the wrong length (should be %{count} characters)"
     template:
-      body: 'There were problems with the following fields:'
+      body: "There were problems with the following fields:"
       header:
-        one: 1 error prohibited this %{model} from being saved
+        one: "1 error prohibited this %{model} from being saved"
         other: "%{count} errors prohibited this %{model} from being saved"
+  help:
+    street_name: "Optional, recommneded for associations, discouraged with full personal name"
   helpers:
     select:
-      prompt: Please select
+      prompt: "Please select"
     submit:
-      create: Create %{model}
-      submit: Save %{model}
-      update: Update %{model}
+      create: "Create %{model}"
+      submit: "Save %{model}"
+      update: "Update %{model}"
   number:
     currency:
       format:
@@ -268,7 +269,7 @@ en:
         separator: "."
         significant: false
         strip_insignificant_zeros: false
-        unit: "$"
+        unit: $
     format:
       delimiter: ","
       precision: 3
@@ -284,9 +285,9 @@ en:
           quadrillion: Quadrillion
           thousand: Thousand
           trillion: Trillion
-          unit: ''
+          unit: ""
       format:
-        delimiter: ''
+        delimiter: ""
         precision: 3
         significant: true
         strip_insignificant_zeros: true
@@ -302,11 +303,11 @@ en:
           tb: TB
     percentage:
       format:
-        delimiter: ''
+        delimiter: ""
         format: "%n%"
     precision:
       format:
-        delimiter: ''
+        delimiter: ""
   support:
     array:
       last_word_connector: ", and "
@@ -322,27 +323,27 @@ en:
       short: "%d %b %I:%M %p"
     pm: pm
   views:
-    javascript:
-      password:
-        mismatch_hint: Password and password confirmation mismatch.
-        strength_hint: Too weak - add numbers, symbols or more letters to make it stronger.
-        success_hint: Both inputs match and your password is strong enough.
     common:
       query_keywords: Keywords
-      query_keywords_placeholder: sleeping bag
+      query_keywords_placeholder: "sleeping bag"
       query_location: Location
       query_location_placeholder: Pangaea
       query_within: Within
       query_within_any: Unlimited
+    javascript:
+      password:
+        mismatch_hint: "Password and password confirmation mismatch."
+        strength_hint: "Too weak - add numbers, symbols or more letters to make it stronger."
+        success_hint: "Both inputs match and your password is strong enough."
     navigation:
-      all_offers: All offers
-      all_requests: All requests
+      all_offers: "All offers"
+      all_requests: "All requests"
       conversations: Conversations
       home: Home
-      my_conversations: My conversations
-      my_offers: My offers
-      my_requests: My requests
-      new_offer: New offer
-      new_request: New request
+      my_conversations: "My conversations"
+      my_offers: "My offers"
+      my_requests: "My requests"
+      new_offer: "New offer"
+      new_request: "New request"
       offers: Offers
       requests: Requests
