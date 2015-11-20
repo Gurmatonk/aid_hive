@@ -15,7 +15,7 @@
           <%= f.email_field :email, autofocus: true %>
           <%= f.password_field :password %>
           <%= f.password_field :password_confirmation %>
-          <div class="form-group">
+          <div class="form-group hidden">
             <label class="control-label">Password strength</label>
             <%= tag :div, name: :password_strength, class: 'form-control-static alert alert-danger', 'data-strength_hint' => t_view(:strength_hint, [:javascript, :password]), 'data-mismatch_hint' => t_view(:mismatch_hint, [:javascript, :password]), 'data-success_hint' => t_view(:success_hint, [:javascript, :password]) %>
           </div>
