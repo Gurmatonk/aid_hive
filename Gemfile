@@ -21,6 +21,7 @@ gem 'textacular'
 gem 'commontator', '~> 4.10.0'
 gem 'mailboxer'
 gem 'devise_zxcvbn'
+gem 'nilify_blanks'
 
 group :development do
   gem 'better_errors'

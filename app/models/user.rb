@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
   geocoded_by :full_street_address
   acts_as_commontator
   acts_as_messageable
+  nilify_blanks
 
   enum role: [:user, :vip, :admin]
 

@@ -1,6 +1,7 @@
 class Entry < ActiveRecord::Base
   geocoded_by :full_street_address
   acts_as_commontable
+  nilify_blanks
 
   belongs_to :user, inverse_of: :entries
 
