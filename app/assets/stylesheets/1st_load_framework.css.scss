@@ -2,6 +2,8 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+// $menu-item-hover-color: #FFFFFF;
+
 // make all images responsive by default
 img {
   @extend .img-responsive;
@@ -11,6 +13,16 @@ img {
 .navbar-brand {
   font-size: inherit;
   }
+
+// background-color: $menu-item-hover-color;
+@media (min-width: 768px) {
+  .dropdown:hover {
+
+    .dropdown-menu {
+      display: block;
+    }
+  }
+}
 
 // THESE ARE EXAMPLES YOU CAN MODIFY
 // create your own classes
