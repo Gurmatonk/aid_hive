@@ -45,8 +45,8 @@ en:
         one: thread
         other: threads
       mailboxer/conversation:
-        one: Conversation
-        other: Conversations
+        one: Chat
+        other: Chats
       offer:
         one: Offer
         other: Offers
@@ -339,9 +339,8 @@ en:
     navigation:
       all_offers: "All offers"
       all_requests: "All requests"
-      conversations: Conversations
+      conversations: Chats
       home: Home
-      my_conversations: "My conversations"
       my_offers: "My offers"
       my_requests: "My requests"
       new_offer: "New offer"

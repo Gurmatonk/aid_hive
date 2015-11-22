@@ -13,8 +13,8 @@
   <%= subnav_link_to false, new_offer_path, t_view(:new_offer, scope) if policy(Offer).create? %>
   <%= subnav_link_to false, my_offers_path, t_view(:my_offers, scope) if current_user.present? %>
 <% end %>
-<%= navbar_menu params[:controller] == 'conversations', t_view(:conversations, scope) do %>
-  <%= subnav_link_to false, conversations_path, t_view(:my_conversations, scope) %>
+<%= subnav_link_to params[:controller] == 'conversations', conversations_path do %>
+  <%= t_view(:conversations, scope) %>
 <% end %>
 <% unless user_signed_in? %>
   <li><%= link_to 'Sign in', new_user_session_path %></li>
