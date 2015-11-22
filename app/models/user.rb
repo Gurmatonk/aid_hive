@@ -22,6 +22,10 @@ class User < ActiveRecord::Base
     "#{result}#{postal_code} #{city}"
   end
 
+  def mailboxer_email(mailboxer_object)
+    email
+  end
+
   private
 
   def set_default_role

@@ -1,0 +1,15 @@
+<% content_for :header do %>
+  <h2><%= Mailboxer::Conversation.model_name.human%> with <%= (@conversation.participants - [current_user]).first.name %></h2>
+<% end %>
+
+<% content_for :content do %>
+  <%= message_list(@receipts) %>
+
+  <h3>Reply</h3>
+  <%= bootstrap_form_tag url: reply_conversation_path(@conversation), method: :post do |f| %>
+    <%= f.text_area :body, rows: 5, placeholder: 'Type something...', required: true %>
+    <%= f.form_group do %>
+      <%= f.primary %>
+    <% end %>
+  <% end %>
+<% end %>

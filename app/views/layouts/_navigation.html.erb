@@ -13,6 +13,14 @@
       <ul class="nav navbar-nav">
         <%= render 'layouts/navigation_links' %>
       </ul>
+      <% if current_user.present? %>
+        <ul class="nav navbar-nav navbar-right">
+          <%= navbar_menu false, "#{current_user.name}  #{icon_image('cog')}".html_safe do %>
+            <%= subnav_link_to false, edit_user_registration_path, 'Edit account' %>
+            <%= subnav_link_to false, destroy_user_session_path, 'Logout' %>
+          <% end %>
+        </ul>
+      <% end %>
     </div>
   </div>
 </nav>

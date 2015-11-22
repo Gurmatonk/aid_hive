@@ -2,6 +2,7 @@
   <table class="table">
     <thead>
       <th><%= Entry.human_attribute_name :created_at %></th>
+      <th><%= entries.first.class.human_attribute_name :user %></th>
       <th><%= Entry.human_attribute_name :title %></th>
       <th><%= Entry.human_attribute_name :description %></th>
       <th><%= Entry.human_attribute_name :location %></th>
@@ -10,6 +11,7 @@
       <% entries.each do |entry| %>
         <tr>
           <td><%= l entry.created_at, format: :date %></td>
+          <td><%= link_to entry.user.name, entry.user %></td>
           <td><%= link_to entry.title, entry %></td>
           <td><%= entry.description %></td>
           <td><%= entry.full_street_address %></td>

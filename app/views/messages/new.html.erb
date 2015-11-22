@@ -1,0 +1,19 @@
+<% content_for :header do %>
+  <h2>Start Conversation</h2>
+<% end %>
+
+<% content_for :content do %>
+  <%= bootstrap_form_for Mailboxer::Message.new, method: :post do |f| %>
+    <%= hidden_field_tag 'recipient_id', @recipient.id %>
+    <%= f.form_group :recipient, label: { text: 'Recipient' } do %>
+      <%= content_tag :p, link_to(@recipient.name, @recipient), class: 'form-control-static' %>
+    <% end %>
+    </div>
+    <%= f.text_field :subject %>
+    <%= f.text_area :body %>
+
+    <%= f.form_group do %>
+      <%= f.primary %>
+    <% end %>
+  <% end %>
+<% end %>

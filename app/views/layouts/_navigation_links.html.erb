@@ -16,10 +16,7 @@
 <%= navbar_menu params[:controller] == 'conversations', t_view(:conversations, scope) do %>
   <%= subnav_link_to false, conversations_path, t_view(:my_conversations, scope) %>
 <% end %>
-<% if user_signed_in? %>
-  <li><%= link_to 'Edit account', edit_user_registration_path %></li>
-  <li><%= link_to 'Sign out', destroy_user_session_path, :method=>'delete' %></li>
-<% else %>
+<% unless user_signed_in? %>
   <li><%= link_to 'Sign in', new_user_session_path %></li>
   <li><%= link_to 'Sign up', new_user_registration_path %></li>
 <% end %>

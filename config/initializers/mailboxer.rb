@@ -7,7 +7,7 @@ Mailboxer.setup do |config|
   config.default_from = 'no-reply@aid-hive.org'
 
   #Configures the methods needed by mailboxer
-  config.email_method = :email
+  config.email_method = :mailboxer_email
   config.name_method = :name
 
   #Configures if you use or not a search engine and which one you are using
@@ -18,4 +18,10 @@ Mailboxer.setup do |config|
   #Configures maximum length of the message subject and body
   config.subject_max_length = 255
   config.body_max_length = 32000
+end
+
+module Mailboxer
+  def self.use_relative_model_naming?
+    true
+  end
 end

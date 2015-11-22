@@ -1,9 +1,30 @@
 <% content_for :header do %>
-  <h1><%= Mailboxer::Conversation.model_name.human count: :other %></h1>
+  <h2><%= Mailboxer::Conversation.model_name.human count: :other %></h2>
 <% end %>
 
 <% content_for :content do %>
-  <ul class="list-group">
-    <%= render partial: 'conversation', collection: @mailbox.inbox %>
-  </ul>
+  <div class="row">
+    <div class="col-md-3">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Active chats</h3>
+        </div>
+        <div class="list-group">
+          <% @mailbox.conversations.each do |conversation| %>
+            <% classes = conversation == @selected_conversation ? 'list-group-item active' : 'list-group-item' %>
+            <%= link_to (conversation.participants - [current_user]).map { |u| u.name }.join(', '), conversations_path(conversation_id: conversation.id), class: classes %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-9">
+      <%= message_list(@receipts) %>
+      <%= bootstrap_form_tag url: reply_conversation_path(@selected_conversation), method: :post do |f| %>
+        <%= f.text_area :body, hide_label: true, rows: 4, placeholder: 'Type something...', required: true %>
+        <%= f.form_group do %>
+          <%= f.primary 'Send' %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
 <% end %>

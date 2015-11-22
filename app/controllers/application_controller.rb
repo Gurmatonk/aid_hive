@@ -14,6 +14,14 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.for(:sign_in) { |u| u.permit(:email, :password, :remember_me) }
   end
 
+  def redirect_to_back(options = {}, default = root_path)
+    if request.env['HTTP_REFERER'].present? and request.env['HTTP_REFERER'] != request.env['REQUEST_URI']
+      redirect_to :back, options
+    else
+      redirect_to default, options
+    end
+  end
+
   def success_message(options = {})
     translate_message(:success, options)
   end

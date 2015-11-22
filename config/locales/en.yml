@@ -320,6 +320,7 @@ en:
       date: "%m-%d-%Y"
       default: "%a, %d %b %Y %I:%M:%S %p %Z"
       long: "%B %d, %Y %I:%M %p"
+      message: "%m-%d-%Y at %I:%M %p"
       short: "%d %b %I:%M %p"
     pm: pm
   views:

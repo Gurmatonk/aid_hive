@@ -5,8 +5,12 @@ Rails.application.routes.draw do
 
   devise_for :users
   resources :users
-  resources :messages
-  resources :conversations
+  resources :messages, only: [:new, :create]
+  resources :conversations, only: [:index, :show, :destroy] do
+    member do
+      post :reply
+    end
+  end
 
   resources :requests do
     collection do

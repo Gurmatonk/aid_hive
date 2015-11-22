@@ -9,7 +9,7 @@
     <%= yield :head %>
     <%= csrf_meta_tags %>
   </head>
-  <body>
+  <body class="<%= params[:controller].gsub '/', '_' %>">
     <div class="container">
       <header>
         <%= render 'layouts/navigation' %>
@@ -18,9 +18,11 @@
     <div class="container">
       <main role="main">
         <div class="page-header">
-          <div class="subnav pull-right">
-            <%= yield :subnav %>
-          </div>
+          <% if content_for(:subnav) %>
+            <div class="subnav pull-right">
+              <%= yield :subnav %>
+            </div>
+          <% end %>
           <%= yield :header %>
         </div>
         <% if Rails.env.demo? %>
