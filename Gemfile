@@ -22,6 +22,8 @@ gem 'commontator', '~> 4.10.0'
 gem 'mailboxer'
 gem 'devise_zxcvbn'
 gem 'nilify_blanks'
+gem 'nokogiri'
+gem 'premailer-rails'
 
 group :development do
   gem 'better_errors'
@@ -45,7 +47,7 @@ group :development do
   gem 'capistrano3-puma',   require: false
 end
 
-group :development, :test do
+group :development, :test, :demo do
   gem 'awesome_print'
   gem 'factory_girl_rails'
   gem 'faker'

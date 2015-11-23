@@ -18,9 +18,9 @@ module ApplicationHelper
     text.gsub("\n", '<br/>').html_safe
   end
 
-  def subnav_link_to(active, link_target, link_text = '')
+  def subnav_link_to(active, link_target, link_text = '', options = {})
     content_tag(:li, class: active ? 'active' : '') do
-      link_to link_target do
+      link_to link_target, options do
         if block_given?
           yield
         else
