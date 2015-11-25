@@ -1,5 +1,5 @@
 module ApplicationHelper
-  def within_options(selected = params[:query_within])
+  def within_options(selected)
     options = [[t_view(:query_within_any), 47058]] +  [5, 10, 20, 25, 30, 50, 75, 100].map { |value| ["#{value} km", value] }
     options_for_select(options, selected)
   end

@@ -18,11 +18,13 @@
     </div>
     <div class="col-md-3">
       <%= label_tag :query_location, t_view(:query_location) %>
-      <%= text_field_tag :query_location, params[:query_location], class: 'form-control', placeholder: t_view(:query_location_placeholder) %>
+      <% location_value = params[:query_location] || current_user.try(:full_street_address) %>
+      <%= text_field_tag :query_location, location_value, class: 'form-control', placeholder: t_view(:query_location_placeholder) %>
     </div>
     <div class="col-md-2">
       <%= label_tag :query_within, t_view(:query_within) %>
-      <%= select_tag(:query_within, within_options, class: 'form-control') %>
+      <% within_selection = params[:query_within] || current_user.present? ? 30 : 47058 %>
+      <%= select_tag(:query_within, within_options(within_selection), class: 'form-control') %>
     </div>
   </div>
 <% end %>
