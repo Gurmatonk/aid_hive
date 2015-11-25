@@ -52,4 +52,33 @@ module ApplicationHelper
   def icon_image(icon, tooltip = '', extra_css_class = '', html_options = {})
     content_tag :span, '', html_options.merge(class: "glyphicon glyphicon-#{icon} #{extra_css_class}", title: tooltip, rel: 'tooltip')
   end
+
+  def action_link_to(entity, action, options = {})
+    forbidden_behavior = options.delete(:if_forbidden) || :hide
+    unless policy(entity).send("#{action}?")
+      case forbidden_behavior
+      when :disable
+        options[:class] ||= ''
+        options[:class] += ' disabled'
+      when :hide
+        return
+      end
+    end
+    link_target = options.delete(:link_target) || ([:show, :destroy].include?(action.to_sym) ? entity : [action, entity])
+    link_text = options.delete(:link_text) || t("actions.#{action}")
+    icon = options.delete(:icon)
+    options[:data] ||= {confirm: "#{entity.class.model_name.human} wirklich löschen?"} if options[:method] == :delete
+    options[:target] = '_blank' if action == :download
+    link_to(link_target, options) do
+      if icon.present?
+        concat icon_image(icon)
+        concat ' '
+      end
+      concat("#{link_text}")
+    end
+  end
+
+  def action_button(entity, action, options = {})
+    action_link_to entity, action, {class: 'btn btn-default'}.merge(options)
+  end
 end

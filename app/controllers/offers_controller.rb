@@ -3,6 +3,16 @@ class OffersController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   after_action :verify_authorized, except: [:index, :show]
 
+  def complete
+    @offer = Offer.find(params[:id])
+    authorize @offer
+    if @offer.complete!
+      redirect_to :back, notice: success_message
+    else
+      redirect_to :back, alert: error_message
+    end
+  end
+
   def create
     @offer = Offer.new
     @offer.assign_attributes permitted_attributes(@offer)

@@ -24,6 +24,7 @@ gem 'devise_zxcvbn'
 gem 'nilify_blanks'
 gem 'nokogiri'
 gem 'premailer-rails'
+gem 'aasm'
 
 group :development do
   gem 'better_errors'

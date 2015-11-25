@@ -3,11 +3,15 @@ class RequestPolicy
 
   def initialize(current_user, model)
     @current_user = current_user
-    @request = request
+    @request = model
   end
 
   def create?
-    @current_user.present?
+    current_user.present?
+  end
+
+  def complete?
+    current_user == request.user && request.may_complete?
   end
 
   def destroy?

@@ -2,6 +2,10 @@
   <h2><%= Offer.model_name.human %>: <%= @offer.title %></h2>
 <% end %>
 
+<% content_for :toolbar do %>
+  <%= action_button @offer, :complete, method: :post, icon: :ok, title: 'Mark offer as completed' %>
+<% end %>
+
 <% content_for :content do %>
   <%= render partial: 'shared/entry_details', locals: {entry: @offer} %>
 <% end %>

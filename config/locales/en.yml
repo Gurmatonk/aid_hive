@@ -1,5 +1,7 @@
 ---
 en:
+  actions:
+    complete: Complete
   activerecord:
     attributes:
       commontator/comment:
@@ -17,6 +19,7 @@ en:
         created_at: Publicated
         description: Description
         postal_code: "Postal code"
+        status: Status
         street_name: "Street name"
         street_number: "Street number"
         title: Title
@@ -54,7 +57,10 @@ en:
         one: Request
         other: Requests
     values:
-      request: ~
+      entry:
+        status:
+          open: Open
+          completed: Completed
   attributes:
     location: Location
   commontator:
@@ -113,9 +119,15 @@ en:
     offers:
       create:
         success: "You created a new offer."
+      complete:
+        success: "The offer was marked as completed."
+        error: "The offer could not be marked as completed."
     requests:
       create:
         success: "You created a new request."
+      complete:
+        success: "The request was marked as completed."
+        error: "The request could not be marked as completed."
   date:
     abbr_day_names:
       - Sun
@@ -331,6 +343,7 @@ en:
       query_location_placeholder: Pangaea
       query_within: Within
       query_within_any: Unlimited
+      you: You
     javascript:
       password:
         mismatch_hint: "Password and password confirmation mismatch."

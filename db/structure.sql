@@ -166,7 +166,8 @@ CREATE TABLE entries (
     type character varying NOT NULL,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
-    user_id integer
+    user_id integer,
+    status integer DEFAULT 0 NOT NULL
 );
 
 
@@ -885,4 +886,6 @@ INSERT INTO schema_migrations (version) VALUES ('20151116192038');
 INSERT INTO schema_migrations (version) VALUES ('20151116192039');
 
 INSERT INTO schema_migrations (version) VALUES ('20151116192040');
+
+INSERT INTO schema_migrations (version) VALUES ('20151125222128');
 

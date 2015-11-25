@@ -14,6 +14,16 @@ class RequestsController < ApplicationController
     end
   end
 
+  def complete
+    @request = Request.find(params[:id])
+    authorize @request
+    if @request.complete!
+      redirect_to :back, notice: success_message
+    else
+      redirect_to :back, alert: error_message
+    end
+  end
+
   def destroy
   end
 

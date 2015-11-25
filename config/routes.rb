@@ -16,11 +16,17 @@ Rails.application.routes.draw do
     collection do
       get :my
     end
+    member do
+      post :complete
+    end
   end
 
   resources :offers do
     collection do
       get :my
+    end
+    member do
+      post :complete
     end
   end
 end
