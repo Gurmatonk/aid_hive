@@ -1,20 +1,27 @@
-<dl class="dl-horizontal">
-  <% if current_user == entry.user %>
-    <dt><%= entry.class.human_attribute_name :status %></dt>
-    <dd><%= entry.human_attribute_value :status %></dd>
-  <% end %>
-  <dt><%= entry.class.human_attribute_name :user %></dt>
-  <dd>
-    <% if current_user == entry.user %>
-      <%= t_view :you %>
-    <% else %>
-      <%= link_to entry.user.name, entry.user %> <%= icon_link :envelope, new_message_path(recipient_id: entry.user), "Send message to #{entry.user.name}" %>
-    <% end %>
-  </dd>
-  <dt><%= entry.class.human_attribute_name :description %></dt>
-  <dd><%= text_with_line_breaks entry.description %></dd>
-  <dt><%= entry.class.human_attribute_name :location %></dt>
-  <dd><%= entry.full_street_address %></dd>
+<div class="row">
+  <div class="col-md-6">
+    <dl class="dl-horizontal">
+      <% if current_user == entry.user %>
+        <dt><%= entry.class.human_attribute_name :status %></dt>
+        <dd><%= entry.human_attribute_value :status %></dd>
+      <% end %>
+      <dt><%= entry.class.human_attribute_name :user %></dt>
+      <dd>
+        <% if current_user == entry.user %>
+          <%= t_view :you %>
+        <% else %>
+          <%= link_to entry.user.name, entry.user %> <%= icon_link :envelope, new_message_path(recipient_id: entry.user), "Send message to #{entry.user.name}" %>
+        <% end %>
+      </dd>
+      <dt><%= entry.class.human_attribute_name :description %></dt>
+      <dd><%= text_with_line_breaks entry.description %></dd>
+      <dt><%= entry.class.human_attribute_name :location %></dt>
+      <dd><%= entry.full_street_address %></dd>
 
-  <%= commontator_thread(entry) %>
-</dl>
+      <%= commontator_thread(entry) %>
+    </dl>
+  </div>
+  <div class="col-md-6">
+    <%= google_map entry, zoom: 13 %>
+  </div>
+</div>
