@@ -12,7 +12,10 @@
         <div class="list-group">
           <% @mailbox.conversations.each do |conversation| %>
             <% classes = conversation == @selected_conversation ? 'list-group-item active' : 'list-group-item' %>
-            <%= link_to (conversation.participants - [current_user]).map { |u| u.name }.join(', '), conversations_path(conversation_id: conversation.id), class: classes %>
+            <%= link_to conversations_path(conversation_id: conversation.id), class: classes do %>
+              <%= (conversation.participants - [current_user]).map { |u| u.name }.join(', ') %>
+              <%= icon_image :asterisk, 'New messages', 'pull-right' if conversation.is_unread?(current_user) %>
+            <% end %>
           <% end %>
         </div>
       </div>

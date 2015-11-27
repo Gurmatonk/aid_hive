@@ -22,7 +22,7 @@ module ConversationsHelper
                 #end)
                 concat(content_tag(:div, class: 'media-body') do
                   concat(content_tag(:h5, class: 'media-heading') do
-                    link_to messages.first.sender.name, messages.first.sender
+                    link_to_if messages.first.sender != current_user, messages.first.sender.name, messages.first.sender
                   end)
                   messages.each do |message|
                     concat(content_tag :small, "#{l(message.created_at, format: :message)}: ", class: 'text-muted')

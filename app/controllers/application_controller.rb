@@ -22,6 +22,15 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def render *args
+    assign_counts
+    super
+  end
+
+  def assign_counts
+    @unread_conversations_count = current_user.mailbox.inbox(unread: true).count if current_user.present?
+  end
+
   def success_message(options = {})
     translate_message(:success, options)
   end

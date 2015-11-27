@@ -1,0 +1,27 @@
+<div class="modal fade" id="send_message" tabindex="-1" role="dialog" aria-labelledby="send_message_label" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <%= button_tag type: 'button', class: 'close', data: {dismiss: 'modal'} do %>
+          <span aria-hidden="true">&times;</span><span class="sr-only">Schließen</span>
+        <% end %>
+        <h4 class="modal-title" id="send_message_label">Send message to <%= entry.user.name %></h4>
+      </div>
+      <%# TODO: Check whether conversation exists and post this if possible, check whether conversations controller could be used for new message, too %>
+      <%= bootstrap_form_for Mailboxer::Message.new, method: :post do |f| %>
+        <%= hidden_field_tag 'recipient_id', entry.user.id %>
+        <div class="modal-body">
+          <div class="clearfix">
+            <%= f.text_area :body, hide_label: true, rows: 4, placeholder: 'Type something...', required: true %>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <%= f.form_group do %>
+            <%= f.primary 'Send' %>
+            <%= button_tag 'Schließen', type: 'button', data: {dismiss: 'modal'}, class: 'btn btn-default' %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
