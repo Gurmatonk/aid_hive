@@ -162,6 +162,7 @@ en:
       default: "%m-%d-%Y"
       long: "%B %d, %Y"
       short: "%b %d"
+      with_weekday: "%A, %m-%d-%Y"
     month_names:
       - January
       - February
@@ -334,6 +335,7 @@ en:
       long: "%B %d, %Y %I:%M %p"
       message: "%m-%d-%Y at %I:%M %p"
       short: "%d %b %I:%M %p"
+      time: "%I:%M %p"
     pm: pm
   views:
     common:
@@ -343,6 +345,7 @@ en:
       query_location_placeholder: Pangaea
       query_within: Within
       query_within_any: Unlimited
+      relates_to: Relates to
       you: You
     javascript:
       password:

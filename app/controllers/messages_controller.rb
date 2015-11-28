@@ -7,9 +7,12 @@ class MessagesController < ApplicationController
 
   def create
     ActiveRecord::Base.transaction do
-      #conversation = current_user.send_message(@recipient, params[:message][:body], params[:message][:subject]).conversation
-      #redirect_to conversation_path(conversation), notice: 'Message has been sent.'
-      current_user.send_message(@recipient, params[:message][:body], params[:message][:subject] || 'No subject')
+      existing_conversation = current_user.private_conversation_with(@recipient)
+      if existing_conversation.present?
+        current_user.reply_to_conversation(existing_conversation, params[:message][:body])
+      else
+        current_user.send_message(@recipient, params[:message][:body], User::PRIVATE_CONVERSATION_SUBJECT)
+      end
       redirect_to :back, notice: 'Message has been sent.'
     end
   end

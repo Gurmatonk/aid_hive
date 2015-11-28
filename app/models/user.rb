@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  PRIVATE_CONVERSATION_SUBJECT = 'Private Conversation'
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :invitable, :database_authenticatable, :registerable, :confirmable, :recoverable, :rememberable, :trackable, :validatable, :zxcvbnable
@@ -24,6 +25,14 @@ class User < ActiveRecord::Base
 
   def mailboxer_email(mailboxer_object)
     email
+  end
+
+  def private_conversations
+    mailbox.conversations.where(subject: PRIVATE_CONVERSATION_SUBJECT)
+  end
+
+  def private_conversation_with(user)
+    private_conversations.participant(user).first
   end
 
   private

@@ -11,8 +11,11 @@ module ConversationsHelper
     capture do
       content_tag :div, class: 'panel panel-default' do
         content_tag :div, class: 'panel-body' do
-          content_tag :div, class: 'messags' do
+          content_tag :div, class: 'messages' do
+            current_date = nil
             message_groups.each do |sender, messages|
+              add_date_separator(current_date, messages.first.created_at)
+              current_date = messages.first.created_at
               concat(content_tag(:div, class: :media) do
                 # code for profile images if decided to add any
                 # concat(content_tag(:div, class: 'media-left') do
@@ -25,9 +28,17 @@ module ConversationsHelper
                     link_to_if messages.first.sender != current_user, messages.first.sender.name, messages.first.sender
                   end)
                   messages.each do |message|
-                    concat(content_tag :small, "#{l(message.created_at, format: :message)}: ", class: 'text-muted')
-                    concat message.body
-                    concat(tag(:br)) unless message == messages.last
+                    add_date_separator(current_date, message.created_at)
+                    current_date = message.created_at
+                    concat(content_tag(:div, class: 'row') do
+                      concat(content_tag(:div, class: 'col-md-auto') do
+                        concat(content_tag :small, "#{l(message.created_at, format: :time)}: ", class: 'text-muted')
+                      end)
+                      concat(content_tag(:div, class: 'col-md-auto') do
+                        concat auto_link(text_with_line_breaks(message.body))
+                      end)
+                      concat(tag(:br)) unless message == messages.last
+                    end)
                   end
                 end)
               end)
@@ -36,5 +47,10 @@ module ConversationsHelper
         end
       end
     end
+  end
+
+  def add_date_separator(last_date, current_date)
+    return if last_date.try(:to_date) == current_date.to_date
+    concat(content_tag(:strong, l(current_date.to_date, format: :with_weekday)))
   end
 end

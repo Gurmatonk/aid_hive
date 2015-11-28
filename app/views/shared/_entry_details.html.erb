@@ -1,30 +1,31 @@
 <%= render partial: 'conversations/send_message_modal', locals: {entry: entry} %>
 <div class="row">
   <div class="col-md-6">
-    <dl class="dl-horizontal">
+    <dl>
       <% if current_user == entry.user %>
         <dt><%= entry.class.human_attribute_name :status %></dt>
         <dd><%= entry.human_attribute_value :status %></dd>
       <% end %>
+      <br>
       <dt><%= entry.class.human_attribute_name :user %></dt>
       <dd>
         <% if current_user == entry.user %>
           <%= t_view :you %>
         <% else %>
           <%= link_to entry.user.name, entry.user %>
-          <%# TODO: Button messes up alignment of <dd> with <dt> %>
           <%= button_tag data: {toggle: 'modal', target: "#send_message"}, class: 'btn btn-link', title: "Send a message regarding this #{entry.class.model_name.human} to #{entry.user.name}" do %>
             <%= icon_image :envelope %>
           <% end %>
         <% end %>
       </dd>
+      <br>
       <dt><%= entry.class.human_attribute_name :description %></dt>
       <dd><%= text_with_line_breaks entry.description %></dd>
+      <br>
       <dt><%= entry.class.human_attribute_name :location %></dt>
       <dd><%= entry.full_street_address %></dd>
-
-      <%= commontator_thread(entry) %>
     </dl>
+    <%= commontator_thread(entry) %>
   </div>
   <div class="col-md-6">
     <%= google_map entry, zoom: 13 %>

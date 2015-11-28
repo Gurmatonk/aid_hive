@@ -7,12 +7,11 @@
         <% end %>
         <h4 class="modal-title" id="send_message_label">Send message to <%= entry.user.name %></h4>
       </div>
-      <%# TODO: Check whether conversation exists and post this if possible, check whether conversations controller could be used for new message, too %>
-      <%= bootstrap_form_for Mailboxer::Message.new, method: :post do |f| %>
+      <%= bootstrap_form_for Mailboxer::Message.new, method: :post, html: {id: 'send_entry_message_form'} do |f| %>
         <%= hidden_field_tag 'recipient_id', entry.user.id %>
         <div class="modal-body">
           <div class="clearfix">
-            <%= f.text_area :body, hide_label: true, rows: 4, placeholder: 'Type something...', required: true %>
+            <%= f.text_area :body, hide_label: true, rows: 4, placeholder: 'Type something...', required: true, 'data-relates_to_hint' => message_relates_to_entry_hint(entry) %>
           </div>
         </div>
         <div class="modal-footer">

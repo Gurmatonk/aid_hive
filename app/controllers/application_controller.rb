@@ -28,7 +28,7 @@ class ApplicationController < ActionController::Base
   end
 
   def assign_counts
-    @unread_conversations_count = current_user.mailbox.inbox(unread: true).count if current_user.present?
+    @unread_conversations_count = current_user.present? ? current_user.mailbox.inbox(unread: true).count : 0
   end
 
   def success_message(options = {})

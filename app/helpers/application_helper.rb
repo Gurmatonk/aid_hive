@@ -14,6 +14,10 @@ module ApplicationHelper
     end
   end
 
+  def message_relates_to_entry_hint(entry)
+    "#{t_view(:relates_to)}: #{polymorphic_url(entry)}"
+  end
+
   def text_with_line_breaks(text)
     text.gsub("\n", '<br/>').html_safe
   end
