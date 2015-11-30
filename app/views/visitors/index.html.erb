@@ -2,9 +2,20 @@
   <!-- Page Content -->
   <!-- Jumbotron Header -->
   <header class="jumbotron">
-    <h1>A Warm Welcome!</h1>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa, ipsam, eligendi, in quo sunt possimus non incidunt odit vero aliquid similique quaerat nam nobis illo aspernatur vitae fugiat numquam repellat.</p>
-    <p><a class="btn btn-primary btn-large">Call to action!</a></p>
+    <h1>Willkommen auf Aid Hive</h1>
+    <p>Aid Hive hilft bei der Koordinierung der dezentralen Flüchtlingshilfe.</p>
+    <p>
+      Engagierte können Gesuche nach Dingen einstellen, die in Unterkünften oder Freundeskreisen benötigt werden.
+      Oder um nach Helfern für Willkommensfeste oder anderen Aktivitäten zu suchen.
+    </p>
+    <p>
+      Auch wer sich nicht selbst aktiv engagiert, kann helfen.
+      Mit Angeboten ermöglicht man Helfenden, gezielt nach verfügbaren Sachspenden zu suchen.
+      Das kann zum Beispiel das Inventar des Abstellraums oder des Dachbodens sein.
+      Helfende können Anbieter dann direkt kontaktieren, wenn sie etwas benötigtes in den Angeboten finden.
+    </p>
+    <%# Devise::Models::Registerable %>
+    <%= link_to 'Sign up', new_user_registration_path, class: 'btn btn-primary' %>
   </header>
 
   <hr>
