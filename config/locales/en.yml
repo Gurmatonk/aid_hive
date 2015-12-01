@@ -89,8 +89,8 @@ en:
       comment_created:
         body: "%{creator_name} commented on %{commontable_name}:"
         subject: "%{creator_name} posted a comment on %{commontable_name}"
-      thread_link_html: "<a href=\"%{commontable_url}\">Click here</a> to view all comments on %{commontable_name}."
-      undisclosed_recipients: undisclosed-recipients
+      thread_link_html: "<a href=\"%{comment_url}\">Click here</a> to view all comments on %{commontable_name}."
+      undisclosed_recipients: "Undisclosed Recipients"
     require_login: "You must login before you can post a comment."
     subscription:
       actions:
@@ -108,6 +108,7 @@ en:
         reopen: "Reopen Discussion"
         show: "Show Comments"
         show_all: "Show All Comments"
+        hide: "Hide Comments"
       errors:
         already_closed: "This discussion has already been closed."
         not_closed: "This discussion is not closed."
