@@ -11,14 +11,18 @@ class AidHiveDeviseMailer < Devise::Mailer
   end
 
   def reset_password_instructions(resource, token, opts = {})
-    opts[:subject] = subject(:reset_password_instructions)
+    if resource.confirmed_at.nil?
+      opts[:subject] = subject(:confirmation_instructions)
+    else
+      opts[:subject] = subject(:reset_password_instructions)
+    end
     super
   end
 
-  def reset_password_instructions(resource, token, opts = {})
-    opts[:subject] = subject(:unlock_instructions)
-    super
-  end
+#  def unlock_instructions(resource, token, opts = {})
+#    opts[:subject] = subject(:unlock_instructions)
+#    super
+#  end
 
   private
 
