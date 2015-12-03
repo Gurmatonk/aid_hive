@@ -3,7 +3,7 @@
 <% end %>
 
 <% content_for :header do %>
-      <h1>Sign up</h1>
+  <h1><%= t_view :heading, [:users, :new] %></h1>
 <% end %>
 <% content_for :content do %>
   <%= bootstrap_form_for resource, as: resource_name, url: registration_path(resource_name), label_col: 'col-md-2', control_col: 'col-md-10' do |f| %>

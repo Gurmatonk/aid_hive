@@ -364,3 +364,8 @@ en:
       new_request: "New request"
       offers: Offers
       requests: Requests
+    users:
+      edit:
+        heading: Edit account
+      new:
+        heading: Sign up

@@ -12,6 +12,7 @@ class ApplicationController < ActionController::Base
   def configure_permitted_params
     devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:email, :name, :password, :password_confirmation, :street_name, :street_number, :postal_code, :city) }
     devise_parameter_sanitizer.for(:sign_in) { |u| u.permit(:email, :password, :remember_me) }
+    devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:email, :password, :password_confirmation, :current_password) }
   end
 
   def redirect_to_back(options = {}, default = root_path)
