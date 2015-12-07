@@ -129,6 +129,12 @@ en:
       complete:
         success: "The request was marked as completed."
         error: "The request could not be marked as completed."
+    users:
+      destroy:
+        success: "%{name}'s account was deleted."
+        error: "Could not delete %{name}."
+      update:
+        success: "%{name} was updated."
   date:
     abbr_day_names:
       - Sun
@@ -340,6 +346,7 @@ en:
     pm: pm
   views:
     common:
+      account_of: "The account of %{name}"
       query_keywords: Keywords
       query_keywords_placeholder: "sleeping bag"
       query_location: Location
@@ -347,7 +354,11 @@ en:
       query_within: Within
       query_within_any: Unlimited
       relates_to: Relates to
+      save: Save
+      sign_up: Sign up
       you: You
+      your: Your
+      your_account: Your account
     javascript:
       password:
         mismatch_hint: "Password and password confirmation mismatch."
@@ -357,7 +368,10 @@ en:
       all_offers: "All offers"
       all_requests: "All requests"
       conversations: Chats
+      edit_account: "Edit account details"
+      edit_credentials: "Edit login details"
       home: Home
+      logout: Logout
       my_offers: "My offers"
       my_requests: "My requests"
       new_offer: "New offer"
@@ -366,6 +380,6 @@ en:
       requests: Requests
     users:
       edit:
-        heading: Edit account
+        heading: Edit account details
       new:
         heading: Sign up

@@ -22,15 +22,11 @@
         </fieldset>
       </div>
       <div class="col-md-6">
-        <fieldset>
-          <legend>Account data</legend>
-          <%= f.text_field :name %>
-          <%= render partial: 'shared/address_inputs', locals: {form: f} %>
-        </fieldset>
+        <%= render partial: 'users/edit_account_data', locals: {form: f} %>
       </div>
     </div>
     <%= f.form_group do %>
-      <%= f.primary 'Sign up' %>
+      <%= f.primary t_view(:sign_up) %>
     <% end %>
   <% end %>
 <% end %>

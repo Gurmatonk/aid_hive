@@ -1,0 +1,15 @@
+<% content_for :header do %>
+  <h1><%= t_view :heading, [:users, :edit] %></h1>
+<% end %>
+<% content_for :content do %>
+  <%= bootstrap_form_for @user, method: :put, label_col: 'col-md-2', control_col: 'col-md-10' do |f| %>
+    <div class="row">
+      <div class="col-md-6">
+        <%= render partial: 'edit_account_data', locals: {form: f} %>
+      </div>
+    </div>
+    <%=f.form_group do %>
+      <%=f.primary t_view(:save) %>
+    <% end %>
+  <% end %>
+<% end %>

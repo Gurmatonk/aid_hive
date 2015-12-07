@@ -1,0 +1,5 @@
+<fieldset>
+  <legend>Account data</legend>
+  <%=form.text_field :name %>
+  <%= render partial: 'shared/address_inputs', locals: {form: form} %>
+</fieldset>

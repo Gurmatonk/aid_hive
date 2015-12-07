@@ -35,7 +35,7 @@ class OfferPolicy
   end
 
   def update?
-    false
+    edit?
   end
 
   def permitted_attributes

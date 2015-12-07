@@ -6,6 +6,10 @@ class UserPolicy
     @user = model
   end
 
+  def edit?
+    user == current_user || current_user.admin?
+  end
+
   def destroy?
     return false if current_user == user
     current_user.admin?
@@ -20,6 +24,12 @@ class UserPolicy
   end
 
   def update?
-    current_user.admin?
+    edit?
+  end
+
+  def permitted_attributes
+    attributes = [:city, :name, :postal_code, :street_name, :street_number]
+    attributes += [:role] if user.admin? && user != current_user
+    attributes
   end
 end
