@@ -15,65 +15,6 @@
       Helfende können Anbieter dann direkt kontaktieren, wenn sie etwas benötigtes in den Angeboten finden.
     </p>
     <%# Devise::Models::Registerable %>
-    <%= link_to 'Sign up', new_user_registration_path, class: 'btn btn-primary' %>
+    <%= link_to t_view(:sign_up), new_user_registration_path, class: 'btn btn-primary' %>
   </header>
-
-  <hr>
-
-  <!-- Title -->
-  <div class="row">
-    <div class="col-lg-12">
-      <h3>Details</h3>
-    </div>
-  </div>
-  <!-- /.row -->
-
-  <!-- Page Features -->
-  <div class="row text-center">
-    <div class="col-md-3 col-sm-6 hero-feature">
-      <div class="thumbnail">
-        <img src="http://placehold.it/800x500" alt="">
-        <div class="caption">
-          <h3>Label</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-          <p><a href="#" class="btn btn-primary">Blue Button</a> <a href="#" class="btn btn-default">White Button</a></p>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-md-3 col-sm-6 hero-feature">
-      <div class="thumbnail">
-        <img src="http://placehold.it/800x500" alt="">
-        <div class="caption">
-          <h3>Label</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-          <p><a href="#" class="btn btn-primary">Blue Button</a> <a href="#" class="btn btn-default">White Button</a></p>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-md-3 col-sm-6 hero-feature">
-      <div class="thumbnail">
-        <img src="http://placehold.it/800x500" alt="">
-        <div class="caption">
-          <h3>Label</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-          <p><a href="#" class="btn btn-primary">Blue Button</a> <a href="#" class="btn btn-default">White Button</a></p>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-md-3 col-sm-6 hero-feature">
-      <div class="thumbnail">
-        <img src="http://placehold.it/800x500" alt="">
-        <div class="caption">
-          <h3>Label</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-          <p><a href="#" class="btn btn-primary">Blue Button</a> <a href="#" class="btn btn-default">White Button</a></p>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- /.row -->
-  <hr>
 <% end %>

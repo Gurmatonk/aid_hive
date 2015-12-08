@@ -1,4 +1,7 @@
 // import the CSS framework
+$navbar-inverse-link-color: #9d9d71;
+$navbar-inverse-link-hover-color: #e9e9a8;
+
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
@@ -13,6 +16,10 @@ img {
 .navbar-brand {
   font-size: inherit;
   }
+
+.navbar-brand img {
+  margin-top: -7px;
+}
 
 // background-color: $menu-item-hover-color;
 @media (min-width: 768px) {

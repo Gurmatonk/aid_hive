@@ -1,7 +1,7 @@
 <%# add navigation links to this file %>
 <% scope = :navigation %>
-<%= subnav_link_to params[:controller] == 'visitors', root_path do %>
-  <%= t_view(:home, scope) %>
+<%= link_to root_path, class: 'navbar-brand' do %>
+  <%= image_tag :home_logo %>
 <% end %>
 <%= navbar_menu params[:controller] == 'requests', t_view(:requests, scope) do %>
   <%= subnav_link_to false, requests_path, t_view(:all_requests, scope) %>
