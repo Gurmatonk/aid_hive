@@ -1,7 +1,7 @@
 # config valid only for current version of Capistrano
 lock '3.4.0'
 
-server '5.45.97.162', port: ENV['PORT'], roles: [:web, :app, :db], primary: true
+#server '5.45.97.162', port: ENV['PORT'], roles: [:web, :app, :db], primary: true
 
 set :repo_url,        'git@github.com:RST-J/aid_hive.git'
 set :application,     'aid_hive'
