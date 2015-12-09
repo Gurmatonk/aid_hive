@@ -1,5 +1,7 @@
+<% scope = [:offers, :new] %>
+
 <% content_for :header do %>
-  <h2>Create new <%= Offer.model_name.human %></h2>
+  <h2><%= t_view :heading, scope: scope, model_name: Offer.model_name.human %></h2>
 <% end %>
 
 <% content_for :content do %>

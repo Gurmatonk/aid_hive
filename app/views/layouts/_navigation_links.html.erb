@@ -16,9 +16,9 @@
 <%= subnav_link_to params[:controller] == 'conversations', conversations_path do %>
   <%= t_view(:conversations, scope) %>
   <%= "(#{@unread_conversations_count})" if @unread_conversations_count > 0 %>
-<% end %>
+<% end if user_signed_in? %>
 <% unless user_signed_in? %>
-  <li><%= link_to 'Sign in', new_user_session_path %></li>
-  <li><%= link_to 'Sign up', new_user_registration_path %></li>
+  <li><%= link_to t_view(:sign_in), new_user_session_path %></li>
+  <li><%= link_to t_view(:sign_up), new_user_registration_path %></li>
 <% end %>
-<li><%= link_to 'About', page_path('about') %></li>
+<li><%= link_to t_view(:about), page_path('about') %></li>

@@ -1,0 +1,24 @@
+en:
+  devise:
+    failure:
+      invited: "Du hast eine nicht abgeschlossene Einladung. Klicke auf den Link in der Einladungs-E-Mail um dein Benutzerkonto freizuschalten."
+    invitations:
+      send_instructions: "Eine Einladung wurde an %{email} verschickt."
+      invitation_token_invalid: "Das Einladungs-Token ist ungültig!"
+      updated: "Dein Passwort wurde gesetzt. Du bist jetzt angemeldet."
+      updated_not_active: "Dein Password wurde gesetzt."
+      no_invitations_remaining: "Du kannst keine weiteren Einladungen mehr verschicken."
+      invitation_removed: "Deine Einladung wurde gelöscht."
+      new:
+        header: "Einladung verschicken"
+        submit_button: "Einladung verschicken"
+      edit:
+        header: "Lege Dein Passwort fest"
+        submit_button: "Passwort festlegen"
+    mailer:
+      invitation_instructions:
+        subject: "Einladungs-Anweisungen"
+        hello: "Hallo %{email}"
+        someone_invited_you: "Jemand hat dich eingeladen, auf %{url} mitzumachen. Du kannst die Einladung über den Link unten annehmen."
+        accept: "Einladung annehmen"
+        ignore: "Bitte ignoriere diese E-Mail, falls du die Einladung nicht annehmen möchtest.<br />Ein Benutzerkonto wird erst angelegt, wenn Du dem Link oben folgst und Dein Passwort festlegst."

@@ -1,5 +1,5 @@
 <%= form.form_group :postal_code do %>
-  <label class="control-label" for="postal_code">Postal code and city</label>
+  <label class="control-label" for="postal_code"><%= t_view :postal_code_and_city %></label>
   <div class="row">
     <div class="col-md-3">
       <%= form.text_field_without_bootstrap :postal_code, class: 'form-control', maxlength: 5 %>
@@ -10,7 +10,7 @@
   </div>
 <% end %>
 <%= form.form_group :street_name do %>
-  <label class="control-label" for="street_name">Street name and number</label>
+  <label class="control-label" for="street_name"><%= t_view :street_name_and_number %></label>
   <div class="row">
     <div class="col-md-9">
       <%= form.text_field_without_bootstrap :street_name, class: 'form-control' %>

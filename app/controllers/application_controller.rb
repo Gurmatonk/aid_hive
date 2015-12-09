@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   before_action :configure_permitted_params, if: :devise_controller?
+  before_action :set_locale
 
   protected
 
@@ -50,5 +51,18 @@ class ApplicationController < ActionController::Base
       key = sub_type
     end
     I18n.t key, options.merge(scope: scope)
+  end
+
+  def set_locale
+    I18n.locale = params[:locale] || extract_locale_from_accept_language_header
+  end
+
+  def extract_locale_from_accept_language_header
+    case request.env['HTTP_ACCEPT_LANGUAGE'].scan(/^[a-z]{2}/).first
+    when 'de'
+      'de'
+    else
+      'en'
+    end
   end
 end

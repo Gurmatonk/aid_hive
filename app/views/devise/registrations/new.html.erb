@@ -2,8 +2,10 @@
   <%= javascript_include_tag :zxcvbn %>
 <% end %>
 
+<% scope = [:users, :sign_up] %>
+
 <% content_for :header do %>
-  <h1><%= t_view :heading, [:users, :new] %></h1>
+  <h1><%= t_view :heading, scope %></h1>
 <% end %>
 <% content_for :content do %>
   <%= bootstrap_form_for resource, as: resource_name, url: registration_path(resource_name), label_col: 'col-md-2', control_col: 'col-md-10' do |f| %>
@@ -11,12 +13,12 @@
     <div class="row">
       <div class="col-md-6">
         <fieldset>
-          <legend>Login data</legend>
+          <legend><%= t_view :login_data_heading, scope %></legend>
           <%= f.email_field :email, autofocus: true %>
           <%= f.password_field :password %>
           <%= f.password_field :password_confirmation %>
           <div class="form-group hidden">
-            <label class="control-label">Password strength</label>
+            <label class="control-label"><%= t_view :password_strength, scope %></label>
             <%= tag :div, name: :password_strength, class: 'form-control-static alert alert-danger', 'data-strength_hint' => t_view(:strength_hint, [:javascript, :password]), 'data-mismatch_hint' => t_view(:mismatch_hint, [:javascript, :password]), 'data-success_hint' => t_view(:success_hint, [:javascript, :password]) %>
           </div>
         </fieldset>
@@ -26,7 +28,7 @@
       </div>
     </div>
     <%= f.form_group do %>
-      <%= f.primary t_view(:sign_up) %>
+      <%= f.primary t_view(:register) %>
     <% end %>
   <% end %>
 <% end %>

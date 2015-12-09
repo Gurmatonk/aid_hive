@@ -137,56 +137,57 @@ en:
         success: "%{name} was updated."
   date:
     abbr_day_names:
-      - Sun
-      - Mon
-      - Tue
-      - Wed
-      - Thu
-      - Fri
-      - Sat
+    - Sun
+    - Mon
+    - Tue
+    - Wed
+    - Thu
+    - Fri
+    - Sat
     abbr_month_names:
-      - Jan
-      - Feb
-      - Mar
-      - Apr
-      - May
-      - Jun
-      - Jul
-      - Aug
-      - Sep
-      - Oct
-      - Nov
-      - Dec
+    - Jan
+    - Feb
+    - Mar
+    - Apr
+    - May
+    - Jun
+    - Jul
+    - Aug
+    - Sep
+    - Oct
+    - Nov
+    - Dec
     day_names:
-      - Sunday
-      - Monday
-      - Tuesday
-      - Wednesday
-      - Thursday
-      - Friday
-      - Saturday
+    - Sunday
+    - Monday
+    - Tuesday
+    - Wednesday
+    - Thursday
+    - Friday
+    - Saturday
     formats:
       default: "%m-%d-%Y"
       long: "%B %d, %Y"
       short: "%b %d"
       with_weekday: "%A, %m-%d-%Y"
     month_names:
-      - January
-      - February
-      - March
-      - April
-      - May
-      - June
-      - July
-      - August
-      - September
-      - October
-      - November
-      - December
+    -
+    - January
+    - February
+    - March
+    - April
+    - May
+    - June
+    - July
+    - August
+    - September
+    - October
+    - November
+    - December
     order:
-      - !ruby/symbol month
-      - !ruby/symbol day
-      - !ruby/symbol year
+    - !ruby/symbol month
+    - !ruby/symbol day
+    - !ruby/symbol year
   datetime:
     distance_in_words:
       about_x_hours:
@@ -346,16 +347,25 @@ en:
     pm: pm
   views:
     common:
+      about: About
       account_of: "The account of %{name}"
+      forgot_password: "Forgot password?"
+      password_instructions_notice: We'll send you a link to reset your password.
+      postal_code_and_city: Postal code and city
       query_keywords: Keywords
       query_keywords_placeholder: "sleeping bag"
       query_location: Location
       query_location_placeholder: Pangaea
       query_within: Within
       query_within_any: Unlimited
+      register: Sign up
       relates_to: Relates to
+      remember_me: Remeber me
+      reset_password: Reset Password
       save: Save
+      sign_in: Log in
       sign_up: Sign up
+      street_name_and_number: Street name and number
       you: You
       your: Your
       your_account: Your account
@@ -378,8 +388,18 @@ en:
       new_request: "New request"
       offers: Offers
       requests: Requests
+    requests:
+      index:
+        heading: All %{model_name}
+      new:
+        heading: Create new %{model_name}
     users:
       edit:
         heading: Edit account details
-      new:
+      show:
+        heading: User profile of
+      sign_up:
+        account_data_heading: Account data
         heading: Sign up
+        login_data_heading: Login data
+        password_strength: Password info

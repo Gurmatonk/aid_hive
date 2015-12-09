@@ -4,14 +4,14 @@ module ApplicationHelper
     options_for_select(options, selected)
   end
 
-  def t_view(key, scope = [controller.controller_name])
-    scope = [scope] unless scope.is_a?(Array)
-    scope = [:views] + scope
-    if I18n.exists?(scope + [key])
-      t key, scope: (scope)
-    else
-      t key, scope: [:views, :common]
-    end
+  def t_view(key, options = {})
+    # FIXME: Lazy fix for existing calls like t_view(:some_key, :some_scope) - or feature as shortcut without interpolations
+    options = {scope: options} unless options.is_a?(Hash)
+    options.reverse_merge!(scope: [controller.controller_name])
+    options[:scope] = [options[:scope]] unless options[:scope].is_a?(Array)
+    options[:scope] = [:views] + options[:scope]
+    options[:scope] = [:views, :common] unless I18n.exists?(options[:scope] + [key])
+    t key, options
   end
 
   def message_relates_to_entry_hint(entry)

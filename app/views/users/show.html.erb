@@ -1,5 +1,7 @@
+<% scope = [:users, :show] %>
+
 <% content_for :header do %>
-  <h1>Profile of <%= @user.name %></h1>
+  <h1><%= "#{t_view(:heading, scope)} #{@user.name}" %></h1>
 <% end %>
 
 <% content_for :content do %>

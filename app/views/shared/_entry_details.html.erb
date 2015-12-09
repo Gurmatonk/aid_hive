@@ -1,6 +1,6 @@
 <%= render partial: 'conversations/send_message_modal', locals: {entry: entry} %>
 <div class="row">
-  <div class="col-md-6">
+  <div class="col-md-10">
     <dl>
       <% if current_user == entry.user %>
         <dt><%= entry.class.human_attribute_name :status %></dt>
@@ -27,7 +27,8 @@
     </dl>
     <%= commontator_thread(entry) %>
   </div>
-  <div class="col-md-6">
-    <%= google_map entry, zoom: 13 %>
-  </div>
+  <%# Don't show map until we can highlight postal code areas %>
+  <!-- <div class="col-md-6"> -->
+    <%# google_map entry, zoom: 13 %>
+  <!-- </div> -->
 </div>
