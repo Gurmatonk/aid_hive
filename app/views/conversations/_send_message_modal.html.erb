@@ -11,7 +11,7 @@
         <%= hidden_field_tag 'recipient_id', entry.user.id %>
         <div class="modal-body">
           <div class="clearfix">
-            <%= f.text_area :body, hide_label: true, rows: 4, placeholder: 'Type something...', required: true, 'data-relates_to_hint' => message_relates_to_entry_hint(entry) %>
+            <%= f.text_area :body, hide_label: true, rows: 4, placeholder: 'Type something...', required: true, data: {relates_to_hint: message_relates_to_entry_hint(entry)} %>
           </div>
         </div>
         <div class="modal-footer">

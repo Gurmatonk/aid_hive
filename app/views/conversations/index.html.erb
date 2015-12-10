@@ -24,7 +24,13 @@
         </div>
       </div>
       <div class="col-md-9">
-        <%= message_list(@receipts) %>
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <div id="selected-conversation" class="messages" data-conversation-id="<%= @selected_conversation.id %>" data-last-receipt-id="<%= @receipts.last.id %>">
+              <%= message_list(@receipts) %>
+            </div>
+          </div>
+        </div>
         <%= bootstrap_form_tag url: reply_conversation_path(@selected_conversation), method: :post do |f| %>
           <%= f.text_area :body, hide_label: true, rows: 4, placeholder: 'Type something...', required: true %>
           <%= f.form_group do %>

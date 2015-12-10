@@ -1,0 +1,6 @@
+<% unless @last_receipt.id.to_param == params[:last_receipt_id] %>
+  $('#selected-conversation').data('last-receipt-id', <%= @last_receipt.id %>);
+  $('#selected-conversation').html('<%= escape_javascript message_list(@receipts) %>');
+  msgs_container = $('.messages')[0]
+  $('.messages').scrollTop(msgs_container.scrollHeight)
+<% end %>
