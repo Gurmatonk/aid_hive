@@ -19,7 +19,11 @@
           <%= f.password_field :password_confirmation %>
           <div class="form-group hidden">
             <label class="control-label"><%= t_view :password_strength, scope %></label>
-            <%= tag :div, name: :password_strength, class: 'form-control-static alert alert-danger', 'data-strength_hint' => t_view(:strength_hint, [:javascript, :password]), 'data-mismatch_hint' => t_view(:mismatch_hint, [:javascript, :password]), 'data-success_hint' => t_view(:success_hint, [:javascript, :password]) %>
+            <%
+              js_scope = [:javascript, :password]
+              pw_data = {strength_hint: t_view(:strength_hint, js_scope), mismatch_hint: t_view(:mismatch_hint, js_scope), success_hint: t_view(:success_hint, js_scope)}
+            %>
+            <%= tag :div, name: :password_strength, class: 'form-control-static alert alert-danger', data: pw_data %>
           </div>
         </fieldset>
       </div>

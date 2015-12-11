@@ -1,6 +1,6 @@
 module ApplicationHelper
   def within_options(selected)
-    options = [[t_view(:query_within_any), 47058]] +  [5, 10, 20, 25, 30, 50, 75, 100].map { |value| ["#{value} km", value] }
+    options = [[t_view(:query_within_any), 47_058]] + [5, 10, 20, 25, 30, 50, 75, 100].map { |value| ["#{value} km", value] }
     options_for_select(options, selected)
   end
 
@@ -57,23 +57,8 @@ module ApplicationHelper
     content_tag :span, '', html_options.merge(class: "glyphicon glyphicon-#{icon} #{extra_css_class}", title: tooltip, rel: 'tooltip')
   end
 
-  def action_link_to(entity, action, options = {})
-    forbidden_behavior = options.delete(:if_forbidden) || :hide
-    unless policy(entity).send("#{action}?")
-      case forbidden_behavior
-      when :disable
-        options[:class] ||= ''
-        options[:class] += ' disabled'
-      when :hide
-        return
-      end
-    end
-    link_target = options.delete(:link_target) || ([:show, :destroy].include?(action.to_sym) ? entity : [action, entity])
-    link_text = options.delete(:link_text) || t("actions.#{action}")
-    icon = options.delete(:icon)
-    options[:data] ||= {confirm: "#{entity.class.model_name.human} wirklich löschen?"} if options[:method] == :delete
-    options[:target] = '_blank' if action == :download
-    link_to(link_target, options) do
+  def link_with_optional_icon(link_target, link_text, options, icon = nil)
+    link_to link_target, options do
       if icon.present?
         concat icon_image(icon)
         concat ' '
@@ -82,13 +67,36 @@ module ApplicationHelper
     end
   end
 
+  def action_link_to(entity, action, options = {})
+    forbidden_behavior = options.delete(:if_forbidden) || :hide
+    action_permitted = policy(entity).send("#{action}?")
+    return unless action_permitted || forbidden_behavior != :hide
+    unless action_permitted
+      options[:class] ||= ''
+      options[:class] += ' disabled'
+    end
+    link_target = options.delete(:link_target) || ([:show, :destroy].include?(action.to_sym) ? entity : [action, entity])
+    link_text = options.delete(:link_text) || t("actions.#{action}")
+    icon = options.delete(:icon)
+    options[:data] ||= {confirm: "#{entity.class.model_name.human} wirklich löschen?"} if options[:method] == :delete
+    options[:target] = '_blank' if action == :download
+    link_with_optional_icon(link_target, link_text, options, icon)
+  end
+
   def action_button(entity, action, options = {})
     action_link_to entity, action, {class: 'btn btn-default'}.merge(options)
   end
 
   def google_map(addressable, options = {})
     options.reverse_merge! width: 500, height: 500, zoom: 15
-    address_line = addressable.full_street_address
-    tag :img, src: "//maps.googleapis.com/maps/api/staticmap?center=#{address_line}&markers=#{address_line}&zoom=#{options[:zoom]}&size=#{options[:width]}x#{options[:height]}&sensor=false", class: 'img-rounded'
+    address_line = addressable.address_line
+    url_params = [
+      ['center', address_line],
+      ['markers', address_line],
+      ['zoom', options[:zoom]],
+      ['size', "#{options[:width]}x#{options[:height]}"],
+      %w(sensor false)
+    ].map { |p, v| "#{p}=#{v}" }.join('&')
+    tag :img, src: "//maps.googleapis.com/maps/api/staticmap?#{url_params}", class: 'img-rounded'
   end
 end

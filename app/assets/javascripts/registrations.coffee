@@ -12,13 +12,13 @@ $(document).ready ->
     if pass == pass_confirmation && (result.score >= 4 && pass.length >= 8 && pass.length <= 72)
       info.removeClass('alert-danger')
       info.addClass('alert-success')
-      msg += '<li>' + info.data('success_hint') + '</li>'
+      msg += '<li>' + info.data('success-hint') + '</li>'
     else
       info.removeClass 'alert-success'
       info.addClass 'alert-danger'
-      msg += '<li>' + info.data('strength_hint') + '</li>' if result.score < 4
+      msg += '<li>' + info.data('strength-hint') + '</li>' if result.score < 4
       if pass != pass_confirmation
-        msg += '<li>' + info.data('mismatch_hint') + '</li>'
+        msg += '<li>' + info.data('mismatch-hint') + '</li>'
     msg += '</ul>'
     info.html(msg)
 

@@ -5,7 +5,7 @@ class ConversationsController < ApplicationController
 
   def index
     @selected_conversation = params[:conversation_id].present? ? Mailboxer::Conversation.find_by_id(params[:conversation_id]) : @private_conversations.first
-    if @selected_conversation.present?
+    if @selected_conversation.present? # rubocop:disable Stytel/GuardClause
       @selected_conversation.mark_as_read(current_user)
       @receipts = @selected_conversation.receipts_for(current_user).order(created_at: :asc)
     end

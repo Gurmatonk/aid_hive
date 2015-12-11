@@ -19,10 +19,10 @@ class AidHiveDeviseMailer < Devise::Mailer
     super
   end
 
-#  def unlock_instructions(resource, token, opts = {})
-#    opts[:subject] = subject(:unlock_instructions)
-#    super
-#  end
+  # def unlock_instructions(resource, token, opts = {})
+  #   opts[:subject] = subject(:unlock_instructions)
+  #   super
+  # end
 
   private
 
