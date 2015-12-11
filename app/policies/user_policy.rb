@@ -7,7 +7,7 @@ class UserPolicy
   end
 
   def edit?
-    user == current_user || current_user.admin?
+    self_or_admin?
   end
 
   def destroy?
@@ -20,7 +20,7 @@ class UserPolicy
   end
 
   def show?
-    current_user.admin? || current_user == user
+    self_or_admin?
   end
 
   def update?
@@ -31,5 +31,11 @@ class UserPolicy
     attributes = [:city, :name, :postal_code, :street_name, :street_number]
     attributes += [:role] if user.admin? && user != current_user
     attributes
+  end
+
+  private
+
+  def self_or_admin?
+    current_user.present? && (current_user.admin? || current_user == user)
   end
 end

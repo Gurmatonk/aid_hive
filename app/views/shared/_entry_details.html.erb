@@ -5,16 +5,18 @@
       <% if current_user == entry.user %>
         <dt><%= entry.class.human_attribute_name :status %></dt>
         <dd><%= entry.human_attribute_value :status %></dd>
+        <br>
       <% end %>
-      <br>
       <dt><%= entry.class.human_attribute_name :user %></dt>
       <dd>
         <% if current_user == entry.user %>
           <%= t_view :you %>
         <% else %>
-          <%= link_to entry.user.name, entry.user %>
-          <%= button_tag data: {toggle: 'modal', target: "#send_message"}, class: 'btn btn-link', title: "Send a message regarding this #{entry.class.model_name.human} to #{entry.user.name}" do %>
-            <%= icon_image :envelope %>
+          <%= link_to_if policy(entry.user).show?, entry.user.name, entry.user %>
+          <% if current_user.present? && current_user != entry.user %>
+            <%= button_tag data: {toggle: 'modal', target: "#send_message"}, class: 'btn btn-link', title: "Send a message regarding this #{entry.class.model_name.human} to #{entry.user.name}" do %>
+              <%= icon_image :envelope %>
+            <% end %>
           <% end %>
         <% end %>
       </dd>
