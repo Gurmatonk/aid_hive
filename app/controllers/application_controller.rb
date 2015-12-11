@@ -8,6 +8,11 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_params, if: :devise_controller?
   before_action :set_locale
 
+  def render(*args)
+    assign_counts
+    super
+  end
+
   protected
 
   def configure_permitted_params
@@ -17,16 +22,11 @@ class ApplicationController < ActionController::Base
   end
 
   def redirect_to_back(options = {}, default = root_path)
-    if request.env['HTTP_REFERER'].present? and request.env['HTTP_REFERER'] != request.env['REQUEST_URI']
+    if request.env['HTTP_REFERER'].present? && request.env['HTTP_REFERER'] != request.env['REQUEST_URI']
       redirect_to :back, options
     else
       redirect_to default, options
     end
-  end
-
-  def render *args
-    assign_counts
-    super
   end
 
   def assign_counts
@@ -41,9 +41,13 @@ class ApplicationController < ActionController::Base
     translate_message(:error, options)
   end
 
+  def message_scope
+    [:controllers] + self.class.name.deconstantize.split('::').map(&:underscore) + [controller_name, params[:action]]
+  end
+
   def translate_message(kind, options)
     sub_type = options.delete(:sub_type)
-    scope = ([:controllers] + self.class.name.deconstantize.split('::').map(&:underscore) << controller_name << params[:action])
+    scope = message_scope
     if sub_type.nil?
       key = kind
     else
