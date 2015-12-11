@@ -34,9 +34,9 @@ group :development do
   gem 'guard-rspec'
   gem 'quiet_assets'
   gem 'rails_layout'
-  gem 'rb-fchange', :require=>false
-  gem 'rb-fsevent', :require=>false
-  gem 'rb-inotify', :require=>false
+  gem 'rb-fchange', require: false
+  gem 'rb-fsevent', require: false
+  gem 'rb-inotify', require: false
   gem 'spring-commands-rspec'
   gem 'web-console', '~> 2.0'
   gem 'spring'
@@ -55,6 +55,7 @@ group :development, :test, :demo do
   gem 'faker'
   gem 'rspec-rails'
   gem 'byebug'
+  gem 'rubocop', require: false
 end
 
 group :production, :demo do
