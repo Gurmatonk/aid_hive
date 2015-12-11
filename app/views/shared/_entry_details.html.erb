@@ -25,7 +25,7 @@
       <dd><%= text_with_line_breaks entry.description %></dd>
       <br>
       <dt><%= entry.class.human_attribute_name :location %></dt>
-      <dd><%= entry.full_street_address %></dd>
+      <dd><%= entry.address_line %></dd>
     </dl>
     <%= commontator_thread(entry) %>
   </div>

@@ -13,6 +13,6 @@
       <dd><%= @user.email %></dd>
     <% end %>
     <dt><%= User.human_attribute_name :location %></dt>
-    <dd><%= @user.full_street_address %></dd>
+    <dd><%= @user.address_line %></dd>
   </dl>
 <% end %>

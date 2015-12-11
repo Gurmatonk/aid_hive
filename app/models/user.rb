@@ -1,12 +1,14 @@
 class User < ActiveRecord::Base
-  PRIVATE_CONVERSATION_SUBJECT = 'Private Conversation'
+  include Locatable
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :invitable, :database_authenticatable, :registerable, :confirmable, :recoverable, :rememberable, :trackable, :validatable, :zxcvbnable
-  geocoded_by :full_street_address
   acts_as_commontator
   acts_as_messageable
   nilify_blanks
+
+  PRIVATE_CONVERSATION_SUBJECT = 'Private Conversation'
 
   enum role: [:user, :vip, :admin]
 
@@ -14,16 +16,12 @@ class User < ActiveRecord::Base
   has_many :offers
   has_many :requests
 
-  after_initialize :set_default_role, :if => :new_record?
+  validates :email, presence: true
+  validates :name, presence: true, uniqueness: true
 
-  after_validation :geocode
+  after_initialize :set_default_role, if: :new_record?
 
-  def full_street_address
-    result = "#{street_name} #{street_number}, " if street_name.present?
-    "#{result}#{postal_code} #{city}"
-  end
-
-  def mailboxer_email(mailboxer_object)
+  def mailboxer_email(_mailboxer_object)
     email
   end
 
