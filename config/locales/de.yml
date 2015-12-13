@@ -367,8 +367,10 @@ de:
       query_keywords_placeholder: "Schlafsack"
       query_location: Standort
       query_location_placeholder: Pangaea
+      query_reset: Suche zurücksetzen
       query_within: Umkreis
       query_within_any: Unbegrenzt
+      query: Suchen
       register: Registrieren
       relates_to: Bezieht sich auf
       remember_me: Eingeloggt bleiben
