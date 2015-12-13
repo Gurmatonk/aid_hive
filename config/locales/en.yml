@@ -366,9 +366,40 @@ en:
       sign_in: Log in
       sign_up: Sign up
       street_name_and_number: Street name and number
+      update: Update
       you: You
       your: Your
       your_account: Your account
+    devise:
+      confirmations:
+        new:
+          heading: Resend confirmation instructions
+          resend_button: Resend confirmation instructions
+      passwords:
+        edit:
+          change_button: Change Password
+          heading: Change your password
+          password_label: New password
+          password_confirmation_label: Confirm new password
+      registrations:
+        edit:
+          awaiting_confirmation: "Currently awaiting confirmation for: %{email}"
+          cancel_button: Cancel my account
+          cancel_confirm_message: All your offers, requests, comments and chats will be deleted permanently. Are you sure?
+          cancel_heading: Cancel Account
+          cancel_hint: Unhappy? We'll be sad to see you go.
+          current_password_hint: For security reasons you must enter your current password to make changes.
+          heading: Edit login data
+          leave_blank_hint: Leave these fields blank if you don't want to change your password.
+      shared:
+        links:
+          missed_confirmation_instructions: Didn't receive confirmation instructions?
+          missed_unlock_instructions: Didn't receive unlock instructions?
+          sign_in_with: Sign in with %{provider}
+      unlocks:
+        new:
+          heading: Resend unlock instructions
+          resend_button: Resend unlock instructions
     javascript:
       password:
         mismatch_hint: "Password and password confirmation mismatch."

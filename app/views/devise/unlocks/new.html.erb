@@ -1,5 +1,7 @@
+<% scope = [:devise, :unlocks, :new] %>
+
 <% content_for :content do %>
-  <h2>Resend unlock instructions</h2>
+  <h2><%= t_view :heading, scope %></h2>
 
   <%= form_for(resource, as: resource_name, url: unlock_path(resource_name), html: {method: :post}) do |f| %>
     <%= devise_error_messages! %>
@@ -10,7 +12,7 @@
     </div>
 
     <div class="actions">
-      <%= f.submit "Resend unlock instructions" %>
+      <%= f.submit t_view(:resend_button, scope) %>
     </div>
   <% end %>
 

@@ -377,9 +377,40 @@ de:
       sign_in: Einloggen
       sign_up: Mitmachen
       street_name_and_number: Straße und Hausnummer
+      update: Aktualisieren
       you: Du
       your: Dein
       your_account: "Dein Benutzerkonto"
+    devise:
+      confirmations:
+        new:
+          heading: Bestätigungs-E-Mail erneut senden
+          resend_button: Bestätigungs-E-Mail erneut senden
+      passwords:
+        edit:
+          change_button: Passwort setzen
+          heading: Passwort neu setzen
+          password_label: Neues Passwort
+          password_confirmation_label: Neues Passwort bestätigen
+      registrations:
+        edit:
+          awaiting_confirmation: "Ausstehende Bestätigung für: %{email}"
+          cancel_button: Mein Benutzerkonto löschen
+          cancel_confirm_message: Alle Deine Angebote, Anfragen, Kommentare und Chats werden unwiederbringlich gelöscht. Bist Du sicher?
+          cancel_heading: Benutzerkonto löschen
+          cancel_hint: Unzufrieden? Schade, falls du gehen willst.
+          current_password_hint: Aus Sicherheitsgründen musst Du dein aktuelles Passwort eingeben um die Änderungen vornehmen zu können.
+          heading: Zugangsdaten bearbeiten
+          leave_blank_hint: Lass diese Felder leer, wenn Du dein Passwort nicht ändern möchtest.
+      shared:
+        links:
+          missed_confirmation_instructions: Bestätigungs-E-Mail nicht bekommen?
+          missed_unlock_instructions: Bestätigungs-E-Mail nicht bekommen?
+          sign_in_with: Einloggen mit %{provider}
+      unlocks:
+        new:
+          heading: Benutzerkonto entsperren
+          resend_button: E-Mail zuschicken
     javascript:
       password:
         mismatch_hint: "Passwort und Wiederholung stimmen nicht überein."

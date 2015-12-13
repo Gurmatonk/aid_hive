@@ -1,5 +1,8 @@
+<%# TODO: reconsider scope name - either by route like in sign_up (registrations/new) or like this %>
+<% scope = [:devise, :confirmations, :new] %>
+
 <% content_for :content do %>
-  <h2>Resend confirmation instructions</h2>
+  <h2><%= t_view :heading, scope %></h2>
 
   <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
     <%= devise_error_messages! %>
@@ -10,7 +13,7 @@
     </div>
 
     <div class="actions">
-      <%= f.submit "Resend confirmation instructions" %>
+      <%= f.submit t_view(:resend_button, scope) %>
     </div>
   <% end %>
 
