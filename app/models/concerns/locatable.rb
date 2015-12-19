@@ -1,27 +1,30 @@
 module Locatable
   extend ActiveSupport::Concern
-  geocoded_by :address_line
 
-  validates :postal_code, presence: true
-  validates :city, presence: true
+  included do
+    geocoded_by :address_line
 
-  after_validation :geocode
+    validates :postal_code, presence: true
+    validates :city, presence: true
 
-  def address_line
-    result = "#{street_name_and_number}, " if street_name.present?
-    "#{result}#{postal_code_and_city}"
-  end
+    after_validation :geocode
 
-  def street_name_and_number
-    result = "#{street_name}"
-    result << " #{street_number}" unless street_number.blank?
-  end
+    def address_line
+      result = "#{street_name_and_number}, " if street_name.present?
+      "#{result}#{postal_code_and_city}"
+    end
 
-  def postal_code_and_city
-    "#{postal_code} #{city}"
-  end
+    def street_name_and_number
+      result = "#{street_name}"
+      result << " #{street_number}" unless street_number.blank?
+    end
 
-  def name_and_address_line
-    "#{display_name}, #{address_line}"
+    def postal_code_and_city
+      "#{postal_code} #{city}"
+    end
+
+    def name_and_address_line
+      "#{display_name}, #{address_line}"
+    end
   end
 end
