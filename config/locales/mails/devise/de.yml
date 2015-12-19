@@ -1,0 +1,8 @@
+de:
+  mails:
+    common:
+      welcome: Willkommen auf Aid Hive, %{name}
+    confirmation_instructions:
+      message: "schön, dass Du mithelfen willst. Bevor es losgehen kann, musst Du aus Sicherheitsgründen noch bestätigen, dass dies wirklich Deine E-Mail-Adresse ist."
+      instruction: "Klicke auf folgenden Link, um Deine E-Mail-Adresse zu bestätigen:"
+      confirmation_link: Benutzerkonto bestätigen

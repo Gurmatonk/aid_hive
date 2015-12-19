@@ -6,11 +6,13 @@ class AidHiveDeviseMailer < Devise::Mailer
   SUBJECT_PREFIX = Rails.env.production? ? '[aid hive] ' : "[aid hive - #{Rails.env} system]"
 
   def confirmation_instructions(resource, token, opts = {})
+    @mail_scope = :confirmation_instructions
     opts[:subject] = subject(:confirmation_instructions)
     super
   end
 
   def reset_password_instructions(resource, token, opts = {})
+    @mail_scope = :reset_password_instructions
     if resource.confirmed_at.nil?
       opts[:subject] = subject(:confirmation_instructions)
     else

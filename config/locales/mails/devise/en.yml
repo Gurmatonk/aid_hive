@@ -1,0 +1,8 @@
+en:
+  mails:
+    common:
+      welcome: Welcome to Aid Hive, %{name}
+    confirmation_instructions:
+      message: "nice to know that you want to help. You need to confirm that this really is your email address for security reasons before you can start."
+      instruction: "You can confirm your email address through the link below:"
+      confirmation_link: Confirm my account

@@ -7,10 +7,15 @@ module ApplicationHelper
   def t_view(key, options = {})
     # FIXME: Lazy fix for existing calls like t_view(:some_key, :some_scope) - or feature as shortcut without interpolations
     options = {scope: options} unless options.is_a?(Hash)
-    options.reverse_merge!(scope: [controller.controller_name])
+    t_scoped_with_common_fallback key, :views, [controller.controller_name, controller.action_name], options
+  end
+
+  def t_scoped_with_common_fallback(key, application_scope, default_nested_scope, options)
+    application_scope = [application_scope] unless application_scope.is_a?(Array)
+    options.reverse_merge!(scope: default_nested_scope)
     options[:scope] = [options[:scope]] unless options[:scope].is_a?(Array)
-    options[:scope] = [:views] + options[:scope]
-    options[:scope] = [:views, :common] unless I18n.exists?(options[:scope] + [key])
+    options[:scope] = application_scope + options[:scope]
+    options[:scope] = (application_scope + [:common]) unless I18n.exists?(options[:scope] + [key])
     t key, options
   end
 
