@@ -31,19 +31,18 @@ Rails.application.configure do
     address: Rails.application.secrets.email_smtp_server,
     port: 25,
     domain: Rails.application.secrets.email_domain_name,
-    authentication: "plain",
+    authentication: 'plain',
     enable_starttls_auto: true,
     user_name: Rails.application.secrets.email_provider_username,
     password: Rails.application.secrets.email_provider_password,
     openssl_verify_mode: Rails.application.secrets.email_provider_verification_mode
   }
   # ActionMailer Config
-  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  config.action_mailer.default_url_options = { host: 'localhost:3000' }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.raise_delivery_errors = true
   # Send email in development mode?
   config.action_mailer.perform_deliveries = true
-
 
   # Asset digests allow you to set far-future HTTP expiration dates on all assets,
   # yet still be able to expire them through the digest params.
