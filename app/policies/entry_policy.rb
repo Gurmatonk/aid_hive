@@ -7,7 +7,7 @@ class EntryPolicy
   end
 
   def create?
-    current_user.present? && entry.user == current_user
+    new? && entry.user == current_user
   end
 
   def complete?
@@ -27,7 +27,7 @@ class EntryPolicy
   end
 
   def new?
-    create?
+    current_user.present?
   end
 
   def show?

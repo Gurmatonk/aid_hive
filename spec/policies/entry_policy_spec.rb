@@ -107,7 +107,7 @@ describe EntryPolicy do
       end
     end
 
-    permissions :create?, :new? do
+    permissions :create? do
       it_behaves_like 'forbidden without login'
 
       ['logged in as normal user', 'logged in as admin'].each do |user_context|
@@ -116,6 +116,19 @@ describe EntryPolicy do
 
           it_behaves_like 'permitted for own entry'
           it_behaves_like 'forbidden for entry from different user'
+        end
+      end
+    end
+
+    permissions :new? do
+      it_behaves_like 'forbidden without login'
+
+      ['logged in as normal user', 'logged in as admin'].each do |user_context|
+        context user_context do
+          let(:entry) { entry_factory.to_s.classify.constantize }
+          include_context user_context
+
+          it_behaves_like 'permitted'
         end
       end
     end
