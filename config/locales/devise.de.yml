@@ -21,7 +21,7 @@ de:
       confirmation_instructions:
         subject: "Registrierung abschließen: Bestätigung Deiner E-Mail-Adresse erforderlich"
       reset_password_instructions:
-        subject: "Anleitung um Dein Passwort zurückzusetzen"
+        subject: "Passwort zurückzusetzen"
       unlock_instructions:
         subject: "Anleitung um Dein Benutzerkonto freizuschalten"
     omniauth_callbacks:

@@ -1,8 +1,14 @@
 de:
   mails:
     common:
-      welcome: Willkommen auf Aid Hive, %{name}
+      hello: Hallo %{name}
     confirmation_instructions:
+      welcome: Willkommen auf Aid Hive, %{name}
       message: "schön, dass Du mithelfen willst. Bevor es losgehen kann, musst Du aus Sicherheitsgründen noch bestätigen, dass dies wirklich Deine E-Mail-Adresse ist."
       instruction: "Klicke auf folgenden Link, um Deine E-Mail-Adresse zu bestätigen:"
       confirmation_link: Benutzerkonto bestätigen
+    reset_password_instructions:
+      fraud_explanation: Wenn Du diese E-Mail nicht angefordert hast, ignoriere sie. Dein aktuelles Passwort bleibt gültig bis Du obigen Link anklickst und ein neues vergibst.
+      message: "Jemand hat einen Link angefordert, um dein Aid Hive-Passwort zu ändern. Um dein Passwort neu zu vergeben, klicke auf folgenden Link:"
+      reset_link: Mein Passwort ändern
+      unconfirmed_notice: "Du möchtest Dein Passwort neu setzen, aber Deine E-Mail-Adresse ist noch nicht bestätigt. Bitt bestätige zuerst Deine E-Mail-Adresse mit folgendem Link und benutze die Funktion dann erneut:"
