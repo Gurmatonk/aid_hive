@@ -34,7 +34,7 @@ class RequestsController < ApplicationController
   end
 
   def new
-    @request = Request.new(user: current_user)
+    @request = Request.new(user: current_user, postal_code: current_user.postal_code, city: current_user.city)
     authorize @request
   end
 

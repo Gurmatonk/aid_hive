@@ -421,6 +421,11 @@ en:
       new_request: "New request"
       offers: Offers
       requests: Requests
+    offers:
+      index:
+        heading: All %{model_name}
+      new:
+        heading: Create new %{model_name}
     requests:
       index:
         heading: All %{model_name}

@@ -34,7 +34,7 @@ class OffersController < ApplicationController
   end
 
   def new
-    @offer = Offer.new(user: current_user)
+    @offer = Offer.new(user: current_user, postal_code: current_user.postal_code, city: current_user.city)
     authorize @offer
   end
 
