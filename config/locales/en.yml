@@ -370,6 +370,7 @@ en:
       reset_password: Reset Password
       save: Save
       sign_in: Log in
+      sign_in_facebook: Log in with Facebook account
       sign_up: Sign up
       street_name_and_number: Street name and number
       update: Update
