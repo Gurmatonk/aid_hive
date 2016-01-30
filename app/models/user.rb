@@ -2,13 +2,14 @@ class User < ActiveRecord::Base
   include Locatable
 
   # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :invitable, :database_authenticatable, :registerable, :confirmable, :recoverable, :rememberable, :trackable, :validatable, :zxcvbnable
+  # :lockable, :timeoutable
+  devise :confirmable, :database_authenticatable, :invitable, :recoverable, :registerable, :rememberable, :trackable, :validatable, :zxcvbnable
+  devise :omniauthable, omniauth_providers: [:facebook]
   acts_as_commontator
   acts_as_messageable
   nilify_blanks
 
-  PRIVATE_CONVERSATION_SUBJECT = 'Private Conversation'
+  PRIVATE_CONVERSATION_SUBJECT = 'Private Conversation'.freeze
 
   enum role: [:user, :vip, :admin]
 
@@ -20,6 +21,24 @@ class User < ActiveRecord::Base
   validates :name, presence: true, uniqueness: true
 
   after_initialize :set_default_role, if: :new_record?
+
+  def self.from_omniauth(auth)
+    where(oauth_provider: auth.provider, oauth_uid: auth.uid).first_or_create do |user|
+      user.email = auth.info.email
+      user.password = Devise.friendly_token(72)
+      user.name = auth.info.name
+      user.skip_confirmation!
+    end
+  end
+
+  def self.new_with_session(params, session)
+    super.tap do |user|
+      if (data = session['devise.facebook_data']) && session['devise.facebook_data']['extra']['raw_info']
+        user.email = data['email'] if user.email.blank?
+        user.name = data['name'] if user.name.blank?
+      end
+    end
+  end
 
   def mailboxer_email(_mailboxer_object)
     email

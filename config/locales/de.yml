@@ -128,6 +128,10 @@ de:
       complete:
         success: "Das Angebot wurde als erledigt markiert."
         error: "Das Angebot konnte nicht als erledigt markiert werden."
+    omniauth_callbacks:
+      facebook:
+        success:
+          completed_location_missing: "Du bist jetzt mit deinem Facebook-Konto eingeloggt. Bitte gib deine Postleitzahl und deinen Ort an.\nTrage Staßenname und -nummer nicht ein, wenn du eine Privatperson bist."
     requests:
       create:
         success: "Du hast eine neue Anfrage angelegt"

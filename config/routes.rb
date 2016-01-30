@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   mount Commontator::Engine => '/commontator'
 
-  devise_for :users
+  devise_for :users, controllers: {omniauth_callbacks: :omniauth_callbacks}
   resources :users
   resources :messages, only: [:new, :create]
   resources :conversations, only: [:index, :show, :destroy] do

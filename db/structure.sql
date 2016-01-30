@@ -379,7 +379,9 @@ CREATE TABLE users (
     city character varying,
     postal_code character varying,
     latitude double precision,
-    longitude double precision
+    longitude double precision,
+    oauth_provider character varying,
+    oauth_uid character varying
 );
 
 
@@ -776,6 +778,13 @@ CREATE INDEX index_users_on_latitude_and_longitude ON users USING btree (latitud
 
 
 --
+-- Name: index_users_on_oauth_provider_and_oauth_uid; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE UNIQUE INDEX index_users_on_oauth_provider_and_oauth_uid ON users USING btree (oauth_provider, oauth_uid);
+
+
+--
 -- Name: index_users_on_reset_password_token; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -889,4 +898,6 @@ INSERT INTO schema_migrations (version) VALUES ('20151116192039');
 INSERT INTO schema_migrations (version) VALUES ('20151116192040');
 
 INSERT INTO schema_migrations (version) VALUES ('20151125222128');
+
+INSERT INTO schema_migrations (version) VALUES ('20160111224456');
 

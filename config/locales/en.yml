@@ -123,6 +123,10 @@ en:
       complete:
         success: "The offer was marked as completed."
         error: "The offer could not be marked as completed."
+    omniauth_callbacks:
+      facebook:
+        success:
+          completed_location_missing: "You are now logged in with your Facebook account. Please enter your postal code and city.\nDo not enter your street name and number if you are a private person."
     requests:
       create:
         success: "You created a new request."

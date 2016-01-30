@@ -4,8 +4,10 @@ module Locatable
   included do
     geocoded_by :address_line
 
-    validates :postal_code, presence: true
-    validates :city, presence: true
+    def self.require_locatable_attributes
+      validates :postal_code, presence: true
+      validates :city, presence: true
+    end
 
     after_validation :geocode
 

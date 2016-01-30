@@ -4,6 +4,7 @@ class Entry < ActiveRecord::Base
 
   acts_as_commontable
   nilify_blanks
+  require_locatable_attributes
 
   enum status: {open: 0, completed: 1}
 
