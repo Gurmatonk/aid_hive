@@ -26,6 +26,7 @@ gem 'nokogiri'
 gem 'premailer-rails'
 gem 'aasm'
 gem 'rails_autolink'
+gem 'omniauth-facebook'
 
 group :development do
   gem 'better_errors'
