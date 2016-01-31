@@ -15,7 +15,9 @@
       Helfende können Anbieter dann direkt kontaktieren, wenn sie etwas benötigtes in den Angeboten finden.
     </p>
     <%# Devise::Models::Registerable %>
-    <%= link_to t_view(:sign_up), new_user_registration_path, class: 'btn btn-primary' %>
-    <%= link_to t_view(:sign_in_facebook), user_omniauth_authorize_path(:facebook), class: 'btn btn-primary center' %>
+    <% if current_user.nil? %>
+      <%= link_to t_view(:sign_up), new_user_registration_path, class: 'btn btn-primary' %>
+      <%= link_to t_view(:sign_in_facebook), user_omniauth_authorize_path(:facebook), class: 'btn btn-primary center' %>
+    <% end %>
   </header>
 <% end %>

@@ -1,6 +1,6 @@
 <%= render partial: 'conversations/send_message_modal', locals: {entry: entry} %>
 <div class="row">
-  <div class="col-md-10">
+  <div class="col-md-6">
     <dl>
       <% if current_user == entry.user %>
         <dt><%= entry.class.human_attribute_name :status %></dt>
@@ -27,10 +27,16 @@
       <dt><%= entry.class.human_attribute_name :location %></dt>
       <dd><%= entry.address_line %></dd>
     </dl>
-    <%= commontator_thread(entry) %>
   </div>
   <%# Don't show map until we can highlight postal code areas %>
-  <!-- <div class="col-md-6"> -->
-    <%# google_map entry, zoom: 13 %>
-  <!-- </div> -->
+  <div class="col-md-6">
+    <%= tag :div, id: :google_map, data: {lat: entry.latitude, lng: entry.longitude, zip: entry.postal_code} %>
+  </div>
 </div>
+<div class="row">
+  <div class="col-md-12">
+    <br>
+    <%= commontator_thread(entry) %>
+  </div>
+</div>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=<%= Rails.application.secrets.google_maps_api_key %>&callback=initGoogleMap"></script>

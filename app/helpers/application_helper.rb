@@ -92,17 +92,4 @@ module ApplicationHelper
   def action_button(entity, action, options = {})
     action_link_to entity, action, {class: 'btn btn-default'}.merge(options)
   end
-
-  def google_map(addressable, options = {})
-    options.reverse_merge! width: 500, height: 500, zoom: 15
-    address_line = addressable.address_line
-    url_params = [
-      ['center', address_line],
-      ['markers', address_line],
-      ['zoom', options[:zoom]],
-      ['size', "#{options[:width]}x#{options[:height]}"],
-      %w(sensor false)
-    ].map { |p, v| "#{p}=#{v}" }.join('&')
-    tag :img, src: "//maps.googleapis.com/maps/api/staticmap?#{url_params}", class: 'img-rounded'
-  end
 end
