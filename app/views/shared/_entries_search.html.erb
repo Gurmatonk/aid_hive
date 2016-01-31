@@ -23,8 +23,9 @@
     </div>
     <div class="col-md-2">
       <%= label_tag :query_within, t_view(:query_within) %>
-      <% within_selection = params[:query_within] || current_user.present? ? 30 : 47058 %>
-      <%= select_tag(:query_within, within_options(within_selection), class: 'form-control') %>
+      <% default_selection = current_user.present? ? 30 : 47058 %>
+      <% within_selection = params[:query_within] || default_selection %>
+      <%= select_tag :query_within, within_options(within_selection), class: 'form-control' %>
     </div>
   </div>
 <% end %>

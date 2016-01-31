@@ -1,5 +1,6 @@
 module ApplicationHelper
   def within_options(selected)
+    selected = selected.to_i if selected.is_a?(String)
     options = [[t_view(:query_within_any), 47_058]] + [5, 10, 20, 25, 30, 50, 75, 100].map { |value| ["#{value} km", value] }
     options_for_select(options, selected)
   end
@@ -68,7 +69,7 @@ module ApplicationHelper
         concat icon_image(icon)
         concat ' '
       end
-      concat("#{link_text}")
+      concat(link_text.to_s)
     end
   end
 
