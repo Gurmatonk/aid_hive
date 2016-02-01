@@ -62,7 +62,7 @@ class ApplicationController < ActionController::Base
   end
 
   def extract_locale_from_accept_language_header
-    case request.env['HTTP_ACCEPT_LANGUAGE'].scan(/^[a-z]{2}/).first
+    case request.env['HTTP_ACCEPT_LANGUAGE'].try(:scan, /^[a-z]{2}/).try(:first)
     when 'de'
       'de'
     else
