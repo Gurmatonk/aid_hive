@@ -89,6 +89,9 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
+    capybara-webkit (1.8.0)
+      capybara (>= 2.3.0, < 2.7.0)
+      json
     carrierwave (0.10.0)
       activemodel (>= 3.2.0)
       activesupport (>= 3.2.0)
@@ -390,6 +393,7 @@ DEPENDENCIES
   capistrano-rvm
   capistrano3-puma
   capybara
+  capybara-webkit
   coffee-rails (~> 4.1.0)
   commontator
   database_cleaner

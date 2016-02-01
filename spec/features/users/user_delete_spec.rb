@@ -1,32 +1,21 @@
 include Warden::Test::Helpers
 Warden.test_mode!
 
-# Feature: User delete
-#   As a user
-#   I want to delete my user profile
-#   So I can close my account
 feature 'User delete', :devise, :js do
-
   after(:each) do
     Warden.test_reset!
   end
 
-  # Scenario: User can delete own account
-  #   Given I am signed in
-  #   When I delete my account
-  #   Then I should see an account deleted message
-  scenario 'user can delete own account' do
-    skip 'skip a slow test'
-    user = FactoryGirl.create(:user)
-    login_as(user, :scope => :user)
+  let(:user) { FactoryGirl.create(:user).tap(&:confirm) }
+
+  scenario 'user can delete his own account' do
+    login_as(user, scope: :user, run_callbacks: false)
     visit edit_user_registration_path(user)
-    click_button 'Cancel my account'
-    page.driver.browser.switch_to.alert.accept
-    expect(page).to have_content I18n.t 'devise.registrations.destroyed'
+    # TODO: Figure out how the captions can be fetched by I18n.t and client and server having the same language set.
+    #       Replace last expect by proper feature style test with sign_in and test for error message.
+    page.accept_confirm do
+      click_button 'Mein Benutzerkonto löschen'
+    end
+    expect(User.find_by_id(user.id)).to be_nil
   end
-
 end
-
-
-
-
