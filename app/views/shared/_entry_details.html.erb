@@ -28,9 +28,9 @@
       <dd><%= entry.address_line %></dd>
     </dl>
   </div>
-  <%# Don't show map until we can highlight postal code areas %>
   <div class="col-md-6">
-    <%= tag :div, id: :google_map, data: {lat: entry.latitude, lng: entry.longitude, zip: entry.postal_code} %>
+    <% overlay = entry.street_name.present? && entry.street_number.present? ? :marker : :kml %>
+    <%= tag :div, id: :google_map, data: {overlay: overlay, lat: entry.latitude, lng: entry.longitude, zip: entry.postal_code} %>
   </div>
 </div>
 <div class="row">
