@@ -2,8 +2,8 @@ FactoryGirl.define do
   factory :user do
     confirmed_at -> { Time.zone.now }
     city 'Stuttgart'
-    email 'test@example.com'
-    name 'Test User'
+    sequence(:email) { |n| "test_#{n}@example.com" }
+    sequence(:name) { |n| "Test User #{n}" }
     password 'please123thisissecure456'
     postal_code '70180'
 

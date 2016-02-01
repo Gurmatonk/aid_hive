@@ -8,7 +8,7 @@
   <dl class="dl-horizontal">
     <dt><%= User.human_attribute_name :name %></dt>
     <dd><%= @user.name %></dd>
-    <% if current_user.admin? %>
+    <% if current_user == @user || current_user.admin? %>
       <dt><%= User.human_attribute_name :email %></dt>
       <dd><%= @user.email %></dd>
     <% end %>
