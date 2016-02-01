@@ -9,7 +9,7 @@ feature 'User delete', :devise, :js do
   let(:user) { FactoryGirl.create(:user).tap(&:confirm) }
 
   scenario 'user can delete his own account' do
-    login_as(user, scope: :user, run_callbacks: false)
+    login_as user, scope: :user, run_callbacks: false
     visit edit_user_registration_path(user)
     # TODO: Figure out how the captions can be fetched by I18n.t and client and server having the same language set.
     #       Replace last expect by proper feature style test with sign_in and test for error message.
