@@ -14,10 +14,10 @@ feature 'User profile page', :devise do
   shared_examples_for 'user seeing full profile' do
     scenario "including the user's email" do
       subject
-      expect(page).to have_content 'User'
-      expect(page).to have_content viewd_user.email
-      expect(page).to have_content viewd_user.name
-      expect(page).to have_content viewd_user.address_line
+      expect(page).to have_content("User profile of #{viewd_user.name}")
+      expect(page).to have_content(viewd_user.email)
+      expect(page).to have_content(viewd_user.name)
+      expect(page).to have_content(viewd_user.address_line)
     end
   end
 
@@ -46,7 +46,7 @@ feature 'User profile page', :devise do
       scenario "user can see another user's profile without his email" do
         Capybara.current_session.driver.header 'Referer', root_path
         subject
-        expect(page).to have_content 'Access denied.'
+        expect(page).to have_content(I18n.t(:show?, scope: [:pundit, :user_policy]))
       end
     end
   end

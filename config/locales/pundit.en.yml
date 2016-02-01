@@ -1,0 +1,5 @@
+en:
+  pundit:
+    default: 'You are not allowed to perform this action.'
+    user_policy:
+      show?: "You are not allowed to view this user's profile."

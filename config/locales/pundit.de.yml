@@ -1,0 +1,5 @@
+de:
+  pundit:
+    default: 'Du bist nicht berechtigt, diese Aktion auszuführen.'
+    user_policy:
+      show?: 'Du darfst das Profil dieses Benutzers nicht aufrufen.'
