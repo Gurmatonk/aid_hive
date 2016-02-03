@@ -1,7 +1,7 @@
 ---
 de:
   actions:
-    complete: Erledigt
+    complete: Als erledigt markieren
   activerecord:
     attributes:
       commontator/comment:
