@@ -89,7 +89,7 @@ de:
       status:
         created_at: "Geschrieben am %{created_at}."
         deleted_by: "Kommentar gelöscht durch %{deleter_name}."
-        updated_at: "Zuletzt bearbeitet von %{editor_name} am %{updated_at}."
+        updated_at: "Bearbeitet von %{editor_name} am %{updated_at}."
     email:
       comment_created:
         body: "%{creator_name} hat %{commontable_name} kommentiert:"
@@ -352,11 +352,10 @@ de:
   time:
     am: vormittags
     formats:
-      commontator: "%b %d %Y at %I:%M%p %Z"
       date: "%d.%m.%Y"
       default: "%A, %d. %B %Y, %H:%M Uhr"
       long: "%A, %d. %B %Y, %H:%M Uhr"
-      message: "%m-%d-%Y at %I:%M %p"
+      commontator: "%d.%m.%Y um %H:%M"
       short: "%d. %B, %H:%M Uhr"
       time: "%I:%M %p"
     pm: nachmittags

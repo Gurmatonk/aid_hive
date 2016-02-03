@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
 
   PRIVATE_CONVERSATION_SUBJECT = 'Private Conversation'.freeze
 
-  enum role: [:user, :vip, :admin]
+  enum role: [:user, :moderator, :admin]
 
   has_many :entries, inverse_of: :user
   has_many :offers

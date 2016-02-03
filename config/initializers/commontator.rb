@@ -103,7 +103,7 @@ Commontator.configure do |config|
   # Returns: a Boolean, true iif the user is a moderator for that thread
   # If you want global moderators, make this proc true for them regardless of thread
   # Default: lambda { |thread, user| false } (no moderators)
-  config.thread_moderator_proc = -> (_thread, _user) { false }
+  config.thread_moderator_proc = -> (_thread, user) { user.admin? || user.moderator? }
 
   # comment_editing
   # Type: Symbol
@@ -134,7 +134,7 @@ Commontator.configure do |config|
   #   :d (delete comments and close threads)
   #   :c (close threads only)
   # Default: :d
-  config.moderator_permissions = :d
+  config.moderator_permissions = :e
 
   # comment_voting
   # Type: Symbol
@@ -156,7 +156,7 @@ Commontator.configure do |config|
   # pos is the number of likes, or the rating, or the reputation
   # neg is the number of dislikes, if applicable, or 0 otherwise
   # Default: lambda { |thread, pos, neg| "%+d" % (pos - neg) }
-  config.vote_count_proc = -> (_thread, pos, neg) { '%+d' % (pos - neg) }
+  config.vote_count_proc = -> (_thread, pos, neg) { format('%+d', (pos - neg)) }
 
   # comment_order
   # Type: Symbol
