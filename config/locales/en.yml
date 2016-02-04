@@ -2,6 +2,7 @@
 en:
   actions:
     complete: Mark as completed
+    destroy: Delete
   activerecord:
     attributes:
       commontator/comment:
@@ -352,6 +353,7 @@ en:
     common:
       about: About
       account_of: "The account of %{name}"
+      confirm_destroy: "Really delete %{entity_caption}?"
       forgot_password: "Forgot password?"
       password_instructions_notice: We'll send you a link to reset your password.
       postal_code_and_city: Postal code and city

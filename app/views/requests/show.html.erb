@@ -3,7 +3,7 @@
 <% end %>
 
 <% content_for :toolbar do %>
-  <%= action_button @request, :complete, method: :post, icon: :ok, title: 'Mark request as completed' %>
+  <%= entry_toolbar @request %>
 <% end %>
 
 <% content_for :content do %>

@@ -2,6 +2,7 @@
 de:
   actions:
     complete: Als erledigt markieren
+    destroy: Löschen
   activerecord:
     attributes:
       commontator/comment:
@@ -363,6 +364,7 @@ de:
     common:
       about: Über
       account_of: "Das Benutzerkonto von %{name}"
+      confirm_destroy: "%{entity_caption} wirklich löschen?"
       forgot_password: "Passwort vergessen?"
       password_instructions_notice: Wir schicken dir einen Link, mit dem Du Dein Passwort neu setzen kannst.
       postal_code_and_city: Postleitzahl und Ort

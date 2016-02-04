@@ -15,7 +15,7 @@ class EntryPolicy
   end
 
   def destroy?
-    current_user.try(:admin?)
+    owner_or_admin?
   end
 
   def edit?

@@ -1,6 +1,4 @@
 FactoryGirl.define do
-  factory :offer do
-    
+  factory :offer, class: Offer, parent: :entry do
   end
-
 end

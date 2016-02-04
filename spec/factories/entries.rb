@@ -1,13 +1,10 @@
 FactoryGirl.define do
   factory :entry do
-    title "MyString"
-description "MyText"
-street_name "MyString"
-street_number "MyString"
-postal_code "MyString"
-city "MyString"
-latitude 1.5
-longitude 1.5
+    sequence(:title) { |n| "Entry #{n}" }
+    sequence(:description) { |n| "Description #{n}" }
+    street_name 'Pelargusstraße'
+    street_number '1'
+    postal_code '70180'
+    city 'Stuttgart'
   end
-
 end
