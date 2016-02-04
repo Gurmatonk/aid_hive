@@ -73,18 +73,21 @@ module ApplicationHelper
     end
   end
 
-  def action_link_to(entity, action, options = {})
-    forbidden_behavior = options.delete(:if_forbidden) || :hide
-    action_permitted = policy(entity).send("#{action}?")
-    return unless action_permitted || forbidden_behavior != :hide
-    unless action_permitted
-      options[:class] ||= ''
-      options[:class] += ' disabled'
+  def default_icon(action)
+    case action
+    when :complete
+      :ok
+    when :destroy
+      :trash
     end
+  end
+
+  def action_link_to(entity, action, options = {})
+    return unless controller.policy(entity).send("#{action}?")
     link_target = options.delete(:link_target) || ([:show, :destroy].include?(action.to_sym) ? entity : [action, entity])
-    link_text = options.delete(:link_text) || t("actions.#{action}")
-    icon = options.delete(:icon)
-    options[:data] ||= {confirm: "#{entity.class.model_name.human} wirklich löschen?"} if options[:method] == :delete
+    link_text = options.delete(:link_text) || t(action, scope: :actions)
+    icon = options.delete(:icon) || default_icon(action)
+    options[:data] ||= {confirm: t(:confirm_destroy, scope: [:views, :common], entity_caption: entity.class.model_name.human)} if options[:method] == :delete
     options[:target] = '_blank' if action == :download
     link_with_optional_icon(link_target, link_text, options, icon)
   end
