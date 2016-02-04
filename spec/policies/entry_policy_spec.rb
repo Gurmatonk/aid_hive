@@ -169,7 +169,7 @@ describe EntryPolicy do
       context 'logged in as normal user' do
         include_context 'logged in as normal user'
 
-        it_behaves_like 'forbidden for own entry'
+        it_behaves_like 'permitted for own entry'
         it_behaves_like 'forbidden for entry from different user'
       end
 
