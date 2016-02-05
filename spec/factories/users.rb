@@ -10,5 +10,11 @@ FactoryGirl.define do
     trait :admin do
       role 'admin'
     end
+
+    trait :confirmed do
+      after :create do |user, _evaluator|
+        user.confirm
+      end
+    end
   end
 end

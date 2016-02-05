@@ -1,21 +1,23 @@
 <%= form.form_group :postal_code do %>
-  <label class="control-label" for="postal_code"><%= t_view :postal_code_and_city %></label>
   <div class="row">
-    <div class="col-md-3">
+    <div class="col-md-1">
+      <%= form.label :postal_code, t_view(:postal_code), class: 'control-label' %>
       <%= form.text_field_without_bootstrap :postal_code, class: 'form-control', maxlength: 5 %>
     </div>
-    <div class="col-md-9">
+    <div class="col-md-3">
+      <%= form.label :city, t_view(:city), class: 'control-label' %>
       <%= form.text_field_without_bootstrap :city, class: 'form-control' %>
     </div>
   </div>
 <% end %>
 <%= form.form_group :street_name do %>
-  <label class="control-label" for="street_name"><%= t_view :street_name_and_number %></label>
   <div class="row">
-    <div class="col-md-9">
+    <div class="col-md-3">
+      <%= form.label :street_name, t_view(:street_name), class: 'control-label' %>
       <%= form.text_field_without_bootstrap :street_name, class: 'form-control' %>
     </div>
-    <div class="col-md-3">
+    <div class="col-md-1">
+      <%= form.label :street_number, t_view(:street_number), class: 'control-label' %>
       <%= form.text_field_without_bootstrap :street_number, class: 'form-control' %>
     </div>
   </div>

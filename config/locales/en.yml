@@ -19,7 +19,7 @@ en:
         city: City
         created_at: Publicated
         description: Description
-        postal_code: "Postal code"
+        postal_code: "Zip code"
         status: Status
         street_name: "Street name"
         street_number: "Street number"
@@ -36,8 +36,8 @@ en:
         name: "Either your name or a nickname"
         password: "Your password must have at least 8 characters"
         postal_code: "Required, used to approximate your location"
-        street_name: "Optional, recommneded for associations, discouraged with full personal name"
-        street_number: "Optional, recommneded for associations, discouraged with full personal name"
+        street_name: "Optional, recommended for associations, discouraged with full personal name"
+        street_number: "Optional, recommended for associations, discouraged with full personal name"
     models:
       commontator/comment:
         one: comment
@@ -127,7 +127,7 @@ en:
     omniauth_callbacks:
       facebook:
         success:
-          completed_location_missing: "You are now logged in with your Facebook account. Please enter your postal code and city.\nDo not enter your street name and number if you are a private person."
+          completed_location_missing: "You are now logged in with your Facebook account. Please enter your zip code and city.\nDo not enter your street name and number if you are a private person."
     requests:
       create:
         success: "You created a new request."
@@ -353,10 +353,12 @@ en:
     common:
       about: About
       account_of: "The account of %{name}"
+      city: City
       confirm_destroy: "Really delete %{entity_caption}?"
       forgot_password: "Forgot password?"
       password_instructions_notice: We'll send you a link to reset your password.
-      postal_code_and_city: Postal code and city
+      postal_code: Zip code
+      postal_code_and_city: Zip code and city
       query: Search
       query_keywords: Keywords
       query_keywords_placeholder: "sleeping bag"
@@ -373,7 +375,9 @@ en:
       sign_in: Log in
       sign_in_facebook: Log in with Facebook account
       sign_up: Sign up
+      street_name: Street name
       street_name_and_number: Street name and number
+      street_number: Number
       update: Update
       you: You
       your: Your
