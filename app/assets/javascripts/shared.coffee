@@ -4,9 +4,9 @@
   map = new google.maps.Map(document.getElementById('google_map'), {
     center: position,
     zoom: 15,
-    disableDefaultUI: true,
-    scrollwheel: false,
-    draggable: false,
+    disableDefaultUI: false,
+    scrollwheel: true,
+    draggable: true,
   })
 
   if map_element.data('overlay') == 'kml'

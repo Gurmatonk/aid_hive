@@ -1,10 +1,9 @@
-<%= bootstrap_form_for @request do |f| %>
-  <%= f.hidden_field :user_id %>
+<%= bootstrap_form_for entry do |f| %>
   <%= f.text_field :title %>
   <%= f.text_area :description, rows: 5 %>
   <%= render partial: 'shared/address_inputs', locals: {form: f} %>
   <%= f.form_group do %>
-    <%= f.primary %>
+    <%= f.primary class: 'btn btn-primary' %>
   <% end %>
 <% end %>
 

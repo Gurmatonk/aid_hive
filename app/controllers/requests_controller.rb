@@ -1,11 +1,12 @@
 class RequestsController < ApplicationController
   include EntrySearchable
   before_action :authenticate_user!, except: [:index, :show]
+  before_action :load_request, only: [:show, :edit, :update]
   after_action :verify_authorized, except: [:index, :show]
 
   def create
     @request = Request.new
-    @request.assign_attributes permitted_attributes(@request)
+    @request.assign_attributes permitted_attributes(@request).merge(user: current_user)
     authorize @request
     if @request.save
       redirect_to @request, notice: success_message
@@ -28,6 +29,7 @@ class RequestsController < ApplicationController
   end
 
   def edit
+    authorize @request
   end
 
   def index
@@ -39,9 +41,21 @@ class RequestsController < ApplicationController
   end
 
   def show
-    @request = Request.find(params[:id])
   end
 
   def update
+    @request.assign_attributes permitted_attributes(@request)
+    authorize @request
+    if @request.save
+      redirect_to @request, notice: success_message
+    else
+      render 'edit'
+    end
+  end
+
+  private
+
+  def load_request
+    @request = Request.find(params[:id])
   end
 end

@@ -1,6 +1,7 @@
 class OffersController < ApplicationController
   include EntrySearchable
   before_action :authenticate_user!, except: [:index, :show]
+  before_action :load_offer, only: [:show, :edit, :update]
   after_action :verify_authorized, except: [:index, :show]
 
   def complete
@@ -15,7 +16,7 @@ class OffersController < ApplicationController
 
   def create
     @offer = Offer.new
-    @offer.assign_attributes permitted_attributes(@offer)
+    @offer.assign_attributes permitted_attributes(@offer).merge(user: current_user)
     authorize @offer
     if @offer.save
       redirect_to @offer, notice: success_message
@@ -28,6 +29,7 @@ class OffersController < ApplicationController
   end
 
   def edit
+    authorize @offer
   end
 
   def index
@@ -39,9 +41,21 @@ class OffersController < ApplicationController
   end
 
   def show
-    @offer = Offer.find(params[:id])
   end
 
   def update
+    @offer.assign_attributes permitted_attributes(@offer)
+    authorize @offer
+    if @offer.save
+      redirect_to @offer, notice: success_message
+    else
+      render 'edit'
+    end
+  end
+
+  private
+
+  def load_offer
+    @offer = Offer.find(params[:id])
   end
 end

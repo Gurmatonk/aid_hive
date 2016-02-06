@@ -39,7 +39,7 @@ class EntryPolicy
   end
 
   def permitted_attributes
-    [:city, :description, :postal_code, :street_name, :street_number, :title, :user_id]
+    [:city, :description, :postal_code, :street_name, :street_number, :title]
   end
 
   private

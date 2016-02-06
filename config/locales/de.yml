@@ -3,6 +3,7 @@ de:
   actions:
     complete: Als erledigt markieren
     destroy: Löschen
+    edit: Bearbeiten
   activerecord:
     attributes:
       commontator/comment:
@@ -129,6 +130,8 @@ de:
       complete:
         success: "Das Angebot wurde als erledigt markiert."
         error: "Das Angebot konnte nicht als erledigt markiert werden."
+      update:
+        success: "Das Angebot wurde aktualisiert."
     omniauth_callbacks:
       facebook:
         success:
@@ -139,6 +142,8 @@ de:
       complete:
         success: "Die Anfrage wurde als erledigt markiert."
         error: "Die Anfrage konnte nicht als erledigt markiert werden."
+      update:
+        success: "Die Anfrage wurde aktualisiert."
     users:
       destroy:
         success: "%{name}'s Benutzerkonto wurde gelöscht."
@@ -443,11 +448,15 @@ de:
       offers: Angebote
       requests: Anfragen
     offers:
+      edit:
+        heading: "%{model_name} bearbeiten"
       index:
         heading: Alle %{model_name}
       new:
         heading: Neues %{model_name} erstellen
     requests:
+      edit:
+        heading: "%{model_name} bearbeiten"
       index:
         heading: Alle %{model_name}
       new:

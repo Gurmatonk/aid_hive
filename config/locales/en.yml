@@ -3,6 +3,7 @@ en:
   actions:
     complete: Mark as completed
     destroy: Delete
+    edit: Edit
   activerecord:
     attributes:
       commontator/comment:
@@ -124,6 +125,8 @@ en:
       complete:
         success: "The offer was marked as completed."
         error: "The offer could not be marked as completed."
+      update:
+        success: "The offer was updated."
     omniauth_callbacks:
       facebook:
         success:
@@ -134,6 +137,8 @@ en:
       complete:
         success: "The request was marked as completed."
         error: "The request could not be marked as completed."
+      update:
+        success: "The request was updated."
     users:
       destroy:
         success: "%{name}'s account was deleted."
@@ -432,6 +437,8 @@ en:
       offers: Offers
       requests: Requests
     offers:
+      edit:
+        heading: "%{model_name} bearbeiten"
       index:
         heading: All %{model_name}
       new:

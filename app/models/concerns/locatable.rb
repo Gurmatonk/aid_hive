@@ -17,8 +17,9 @@ module Locatable
     end
 
     def street_name_and_number
-      result = "#{street_name}"
-      result << " #{street_number}" unless street_number.blank?
+      result = street_name.to_s
+      result += " #{street_number}" unless street_number.blank?
+      result
     end
 
     def postal_code_and_city
