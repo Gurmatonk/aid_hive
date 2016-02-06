@@ -471,3 +471,17 @@ de:
         heading: Registrieren
         login_data_heading: Zugangsdaten
         password_strength: Passwort-Info
+    visitors:
+      index:
+        box_left_text:
+          Engagierte können Gesuche nach Dingen einstellen, die in Unterkünften oder Freundeskreisen benötigt werden.
+          Oder um nach Helfern für Willkommensfeste oder anderen Aktivitäten zu suchen.
+        box_left_title: Suchen
+        box_middle_text:
+          Mit Angeboten ermöglicht man Helfenden, gezielt nach Sachspenden zu suchen.
+          Das kann zum Beispiel das Inventar des Abstellraums oder des Dachbodens sein, das da schon lange sein Dasein fristet.
+        box_middle_title: Anbieten
+        box_right_text: Du hast eine Idee für eine neue Funktion oder eine Verbesserung von Aid Hive? %{email}
+        box_right_title: Ideen
+        heading: Willkommen auf Aid Hive
+        description: Aid Hive hilft bei der Koordinierung von Flüchtlingshilfe vor Ort.

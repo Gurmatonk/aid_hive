@@ -458,3 +458,17 @@ en:
         heading: Sign up
         login_data_heading: Login data
         password_strength: Password info
+    visitors:
+      index:
+        box_left_text:
+          People actively helping in accommodations can create requests for things needed there.
+          Or ask for help for certain events or actions.
+        box_left_title: Request
+        box_middle_text:
+          Putting up offers about things you have left or can spare, you enable helpers to specifically search for needed supply.
+          Check your basement or attic.
+        box_middle_title: Offer
+        box_right_text: You have an idea for a new feature or an improvement of Aid Hive? %{email}
+        box_right_title: Ideas
+        heading: Welcome to Aid Hive
+        description: Aid Hive helps to coordinate refugee relief.
