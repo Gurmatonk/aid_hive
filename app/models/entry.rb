@@ -18,6 +18,9 @@ class Entry < ActiveRecord::Base
   end
 
   belongs_to :user, inverse_of: :entries
+  has_one :thread, as: :commontable, class_name: 'Commontator::Thread'
+  has_many :comments, through: :thread, class_name: 'Commontator::Comment'
+  has_many :commenters, -> { uniq }, as: :creator, source: :creator, through: :comments, source_type: 'User'
 
   validates :title, presence: true
   validates :description, presence: true

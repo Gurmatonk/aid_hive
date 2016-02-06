@@ -452,6 +452,8 @@ de:
         heading: "%{model_name} bearbeiten"
       index:
         heading: Alle %{model_name}
+      my:
+        heading: Meine %{model_name}
       new:
         heading: Neues %{model_name} erstellen
     requests:
@@ -459,6 +461,8 @@ de:
         heading: "%{model_name} bearbeiten"
       index:
         heading: Alle %{model_name}
+      my:
+        heading: Meine %{model_name}
       new:
         heading: Neue %{model_name} erstellen
     users:

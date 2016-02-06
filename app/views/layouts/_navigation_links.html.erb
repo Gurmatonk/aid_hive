@@ -6,12 +6,12 @@
 <%= navbar_menu params[:controller] == 'requests', t_view(:requests, scope) do %>
   <%= subnav_link_to false, requests_path, t_view(:all_requests, scope) %>
   <%= subnav_link_to false, new_request_path, t_view(:new_request, scope) if policy(Request).new? %>
-  <%# subnav_link_to false, my_requests_path, t_view(:my_requests, scope) if current_user.present? %>
+  <%= subnav_link_to false, my_requests_path, t_view(:my_requests, scope) if current_user.present? %>
 <% end %>
 <%= navbar_menu params[:controller] == 'offers', t_view(:offers, scope) do %>
   <%= subnav_link_to false, offers_path, t_view(:all_offers, scope) %>
   <%= subnav_link_to false, new_offer_path, t_view(:new_offer, scope) if policy(Offer).new? %>
-  <%# subnav_link_to false, my_offers_path, t_view(:my_offers, scope) if current_user.present? %>
+  <%= subnav_link_to false, my_offers_path, t_view(:my_offers, scope) if current_user.present? %>
 <% end %>
 <%= subnav_link_to params[:controller] == 'conversations', conversations_path do %>
   <%= t_view(:conversations, scope) %>

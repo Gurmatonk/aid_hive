@@ -26,6 +26,10 @@ class EntryPolicy
     true
   end
 
+  def my?
+    current_user.present?
+  end
+
   def new?
     current_user.present?
   end
