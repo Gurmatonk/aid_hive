@@ -185,7 +185,7 @@ de:
       default: "%m-%d-%Y"
       long: "%B %d, %Y"
       short: "%b %d"
-      with_weekday: "%A, %m-%d-%Y"
+      with_weekday: "%A, %d.%m.%Y"
     month_names:
     - 
     - Januar
@@ -363,7 +363,7 @@ de:
       long: "%A, %d. %B %Y, %H:%M Uhr"
       commontator: "%d.%m.%Y um %H:%M"
       short: "%d. %B, %H:%M Uhr"
-      time: "%I:%M %p"
+      time: "%H:%M Uhr"
     pm: nachmittags
   views:
     common:
