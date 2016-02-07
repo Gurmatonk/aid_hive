@@ -95,4 +95,8 @@ module ApplicationHelper
   def action_button(entity, action, options = {})
     action_link_to entity, action, {class: 'btn btn-default'}.merge(options)
   end
+
+  def parameters_by_regex(regex, params)
+    params.select { |k, _v| k =~ regex }
+  end
 end

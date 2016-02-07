@@ -453,6 +453,7 @@ de:
       index:
         heading: Alle %{model_name}
       my:
+        commented: Kommentierte %{model_name}
         heading: Meine %{model_name}
       new:
         heading: Neues %{model_name} erstellen
@@ -462,6 +463,7 @@ de:
       index:
         heading: Alle %{model_name}
       my:
+        commented: Kommentierte %{model_name}
         heading: Meine %{model_name}
       new:
         heading: Neue %{model_name} erstellen

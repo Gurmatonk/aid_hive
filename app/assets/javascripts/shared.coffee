@@ -23,6 +23,15 @@
     })
 
 $(document).ready ->
-  $('a').filter ->
+  thread_links = $('a').filter ->
     this.href.match /commontator\/threads\/\d+/
-  .click()
+
+  if thread_links.length == 1
+    thread_links.click()
+    thread_link = thread_links[0]
+    # TODO: Add clean refresh which only changes content if there are new comments
+    # setInterval ->
+      # $.getScript thread_link.href
+      # msgs_container = $('.messages')[0]
+      # $('.messages').scrollTop(msgs_container.height)
+    # , 2000

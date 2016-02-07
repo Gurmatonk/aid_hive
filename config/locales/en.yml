@@ -438,14 +438,22 @@ en:
       requests: Requests
     offers:
       edit:
-        heading: "%{model_name} bearbeiten"
+        heading: "Edit %{model_name}"
       index:
         heading: All %{model_name}
+      my:
+        commented: Commented %{model_name}
+        heading: My %{model_name}
       new:
         heading: Create new %{model_name}
     requests:
+      edit:
+        heading: "Edit %{model_name}"
       index:
         heading: All %{model_name}
+      my:
+        commented: Commented %{model_name}
+        heading: My %{model_name}
       new:
         heading: Create new %{model_name}
     users:

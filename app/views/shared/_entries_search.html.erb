@@ -1,12 +1,19 @@
-<% query_var_name = 'query_keywords' unless defined?(query_var_name) && query_var_name.present? %>
+<% prefix = local_assigns.fetch(:query_prefix, 'query_') %>
+<% query_keywords_name = "#{prefix}keywords" %>
+<% query_location_name = "#{prefix}location" %>
+<% query_within_name = "#{prefix}within" %>
+
 <%= form_tag(local_assigns.fetch(:url_for_options, ''), method: :get, class: 'form-horizontal search-form', role: 'form') do %>
+  <% local_assigns.fetch(:hidden_forwards, {}).each do |name, value| %>
+    <%= hidden_field_tag name, value %>
+  <% end %>
   <div class="form-group">
     <div class="col-md-4">
-      <%= label_tag :query_keywords, t_view(:query_keywords) %>
+      <%= label_tag query_keywords_name, t_view(:query_keywords) %>
       <div class="input-group">
-        <%= text_field_tag :query_keywords, params[:query_keywords], class: 'form-control', placeholder: t_view(:query_keywords_placeholder) %>
-        <% unless params[query_var_name].blank? %>
-          <span class="input-group-addon"><%= icon_link 'remove', params.merge({query_var_name.to_sym => nil}), t_view(:query_reset) %></span>
+        <%= text_field_tag query_keywords_name, params[query_keywords_name], class: 'form-control', placeholder: t_view(:query_keywords_placeholder) %>
+        <% unless params[query_keywords_name].blank? %>
+          <span class="input-group-addon"><%= icon_link 'remove', params.merge({query_keywords_name.to_sym => nil}), t_view(:query_reset) %></span>
         <% end %>
         <div class="input-group-btn">
           <%= button_tag type: 'submit', :class => 'btn btn-default' do %>
@@ -17,15 +24,15 @@
       </div>
     </div>
     <div class="col-md-3">
-      <%= label_tag :query_location, t_view(:query_location) %>
-      <% location_value = params[:query_location] || current_user.try(:address_line) %>
-      <%= text_field_tag :query_location, location_value, class: 'form-control', placeholder: t_view(:query_location_placeholder) %>
+      <%= label_tag query_location_name, t_view(:query_location) %>
+      <% location_value = params[query_location_name] || current_user.try(:address_line) %>
+      <%= text_field_tag query_location_name, location_value, class: 'form-control', placeholder: t_view(:query_location_placeholder) %>
     </div>
     <div class="col-md-2">
-      <%= label_tag :query_within, t_view(:query_within) %>
+      <%= label_tag query_within_name, t_view(:query_within) %>
       <% default_selection = current_user.present? ? 30 : 47058 %>
-      <% within_selection = params[:query_within] || default_selection %>
-      <%= select_tag :query_within, within_options(within_selection), class: 'form-control' %>
+      <% within_selection = params[query_within_name] || default_selection %>
+      <%= select_tag query_within_name, within_options(within_selection), class: 'form-control' %>
     </div>
   </div>
 <% end %>

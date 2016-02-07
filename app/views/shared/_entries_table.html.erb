@@ -1,4 +1,4 @@
-<%= render layout: 'shared/paginated', locals: {collection: entries} do %>
+<%= render layout: 'shared/paginated', locals: {collection: entries, param_name: local_assigns.fetch(:page_param_name, :query_page), params: local_assigns.fetch(:params, nil)} do %>
   <table class="table">
     <thead>
       <th><%= Entry.human_attribute_name :created_at %></th>

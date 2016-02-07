@@ -16,6 +16,10 @@ class User < ActiveRecord::Base
   has_many :entries, inverse_of: :user
   has_many :offers
   has_many :requests
+  has_many :comments, as: :creator, class_name: 'Commontator::Comment'
+  has_many :threads, through: :comments, class_name: 'Commontator::Thread'
+  has_many :commented_offers, -> { uniq }, through: :threads, source: :commontable, source_type: 'Entry', class_name: 'Offer'
+  has_many :commented_requests, -> { uniq }, through: :threads, source: :commontable, source_type: 'Entry', class_name: 'Request'
 
   validates :email, presence: true
   validates :name, presence: true, uniqueness: true
