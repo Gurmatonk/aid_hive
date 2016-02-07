@@ -12,7 +12,7 @@
   if map_element.data('overlay') == 'kml'
     host = if window.location.hostname == 'localhost' then 'demo.aid-hive.org' else window.location.hostname
     kmlLayer = new google.maps.KmlLayer({
-      url: 'https://' + host + '/postal_code_areas/' + map_element.data('zip') + '.kmz',
+      url: 'http://' + host + '/postal_code_areas/' + map_element.data('zip') + '.kmz',
       suppressInfoWindows: true,
       map: map
     })
