@@ -10,8 +10,9 @@
   })
 
   if map_element.data('overlay') == 'kml'
+    host = if window.location.hostname == 'localhost' then 'demo.aid-hive.org' else window.location.hostname
     kmlLayer = new google.maps.KmlLayer({
-      url: 'http://www.peschla.net/postal_code_areas/' + map_element.data('zip') + '.kml',
+      url: 'https://' + host + '/postal_code_areas/' + map_element.data('zip') + '.kmz',
       suppressInfoWindows: true,
       map: map
     })
@@ -20,7 +21,6 @@
       position: position,
       map: map
     })
-  end
 
 $(document).ready ->
   $('a').filter ->
