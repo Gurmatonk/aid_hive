@@ -7,6 +7,14 @@ FactoryGirl.define do
     password 'please123thisissecure456'
     postal_code '70180'
 
+    trait :user do
+      role 'user'
+    end
+
+    trait :moderator do
+      role 'moderator'
+    end
+
     trait :admin do
       role 'admin'
     end
