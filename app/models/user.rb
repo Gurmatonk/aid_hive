@@ -22,6 +22,7 @@ class User < ActiveRecord::Base
   has_many :commented_requests, -> { uniq }, through: :threads, source: :commontable, source_type: 'Entry', class_name: 'Request'
 
   validates :email, presence: true
+  # TODO: Reconsider this - or make sure there is an error handler for duplicate names coming via Facebook
   validates :name, presence: true, uniqueness: true
 
   after_initialize :set_default_role, if: :new_record?

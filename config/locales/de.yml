@@ -23,7 +23,7 @@ de:
         postal_code: PLZ
         status: Status
         street_name: Straße
-        street_number: Hausnummer
+        street_number: Nr.
         title: Titel
       offer:
         user: Anbieter/in
@@ -37,13 +37,13 @@ de:
     errors: ~
     help:
       user:
-        city: "Erforderlich, zur näherungsweisen Bestimmung deines Standorts"
+        city: "Empfohlen zur groben Bestimmung deines Standorts"
         email: "Deine E-Mail wird keinen anderen Benutzern angezeigt"
         name: "Dein Name oder ein Pseudonym"
         password: "Dein Passwort muss mindestens 8 Zeichen haben"
-        postal_code: "Erforderlich, zur näherungsweisen Bestimmung deines Standorts"
-        street_name: "Optional, empfohlen für Vereine/Organisationen, nicht empfohlen mit Klarnamen"
-        street_number: "Optional, empfohlen für Vereine/Organisationen, nicht empfohlen mit Klarnamen"
+        postal_code: "Empfohlen zur groben Bestimmung deines Standorts"
+        street_name: "Empfohlen für Einrichtungen, nicht mit Klarnamen"
+        street_number: "Empfohlen für Einrichtungen, nicht mit Klarnamen"
     models:
       commontator/comment:
         one: Kommentar
@@ -393,7 +393,7 @@ de:
       sign_up: Mitmachen
       street_name: Straße
       street_name_and_number: Straße und Hausnummer
-      street_number: Hausnummer
+      street_number: Nr.
       update: Aktualisieren
       you: Du
       your: Dein
@@ -469,6 +469,7 @@ de:
         heading: Neue %{model_name} erstellen
     users:
       edit:
+        account_data: Benutzerdaten
         heading: Benutzerkonto bearbeiten
       show:
         heading: Benutzerprofil von

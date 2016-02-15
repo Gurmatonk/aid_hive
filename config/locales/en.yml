@@ -32,13 +32,13 @@ en:
     errors: ~
     help:
       user:
-        city: "Required, used to approximate your location"
+        city: "Recommended to approximate your location"
         email: "Your email won't be displayed to other users"
         name: "Either your name or a nickname"
         password: "Your password must have at least 8 characters"
-        postal_code: "Required, used to approximate your location"
-        street_name: "Optional, recommended for associations, discouraged with full personal name"
-        street_number: "Optional, recommended for associations, discouraged with full personal name"
+        postal_code: "Recommended to approximate your location"
+        street_name: "Recommended for associations, discouraged with full personal name"
+        street_number: "Recommended for associations, discouraged with full personal name"
     models:
       commontator/comment:
         one: comment
@@ -458,6 +458,7 @@ en:
         heading: Create new %{model_name}
     users:
       edit:
+        account_data: Account data
         heading: Edit account details
       show:
         heading: User profile of

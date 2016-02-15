@@ -16,12 +16,15 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
   private
 
   def redirect_after_authentication
-    if @user.postal_code.blank? || @user.city.blank?
-      sign_in @user, event: :authentication
-      redirect_to edit_user_path(@user), notice: success_message(sub_type: :completed_location_missing)
-    else
-      sign_in_and_redirect @user, event: :authentication
-      set_flash_message(:notice, :success, kind: 'Facebook') if is_navigational_format?
-    end
+    # TODO:
+    #   Handle duplicate user names  - or allow them
+    #   https://github.com/plataformatec/devise/wiki/OmniAuth:-Overview
+    # Do not require users to add postal code and city
+    # if @user.postal_code.blank? || @user.city.blank?
+    #   sign_in @user, event: :authentication
+    #   redirect_to edit_user_path(@user), notice: success_message(sub_type: :completed_location_missing)
+    # else
+    sign_in_and_redirect @user, event: :authentication
+    set_flash_message(:notice, :success, kind: 'Facebook') if is_navigational_format?
   end
 end

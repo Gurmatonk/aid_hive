@@ -2,10 +2,10 @@
   <h1><%= t_view :heading, [:users, :edit] %></h1>
 <% end %>
 <% content_for :content do %>
-  <%= bootstrap_form_for @user, method: :put, label_col: 'col-md-2', control_col: 'col-md-10' do |f| %>
+  <%= bootstrap_form_for @user, method: :put do |f| %>
     <div class="row">
-      <div class="col-md-6">
-        <%= render partial: 'edit_account_data', locals: {form: f} %>
+      <div class="col-md-4">
+        <%= render partial: 'edit_account_data', locals: {form: f, column_width_factor: 3} %>
       </div>
     </div>
     <%=f.form_group do %>

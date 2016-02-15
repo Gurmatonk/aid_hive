@@ -1,5 +1,5 @@
 <fieldset>
-  <legend>Account data</legend>
-  <%=form.text_field :name %>
-  <%= render partial: 'shared/address_inputs', locals: {form: form} %>
+  <legend><%= t_view :account_data, scope: [:users, :edit] %></legend>
+  <%= form.text_field :name %>
+  <%= render partial: 'shared/address_inputs', locals: {form: form, column_width_factor: local_assigns.fetch(:column_width_factor, 1)} %>
 </fieldset>
